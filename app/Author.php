@@ -33,10 +33,18 @@ class Author extends Model implements AuthenticatableContract, CanResetPasswordC
 	 */
 	protected $fillable = ['email', 'password'];
 
-	protected static $validationRules = [
-		'email'    => 'required|email',
-		'password' => 'required|confirmed',
-	];
+	/**
+	 * Get the validation rules for this model.
+	 *
+	 * @return array
+	 */
+	public static function getRules()
+	{
+		return [
+			'email'    => 'required|email',
+			'password' => 'required|confirmed',
+		];
+	}
 
 	public function contents()
 	{

@@ -19,13 +19,19 @@ class Content extends Model implements ValidatableContract
 
 	protected $fillable = ['title', 'slug', 'text', 'last_editor', 'type_id'];
 
-	public static $validationRules = [
-		'title'       => 'required|unique:contents',
-		// TODO We actually should validate that this contains only dashes and alphanumerics.
-		'slug'        => 'required|unique:contents',
-		'type_id'     => 'required|exists:types,id',
-		'last_editor' => 'exists:authors,id',
-	];
+	/**
+	 * Get the validation rules for this model.
+	 *
+	 * @return array
+	 */
+	public static function getRules()
+	{
+		return [
+			'title'   => 'required|unique:contents',
+			'slug'    => 'required|alpha_dash|unique:contents',
+			'type_id' => 'required|exists:types,id',
+		];
+	}
 
 	public function type()
 	{

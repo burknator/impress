@@ -3,6 +3,7 @@
 use Impress\Type;
 use Impress\Content;
 use Request;
+use Impress\Http\Requests\StoreContentRequest;
 
 class ContentsController extends Controller {
 	/**
@@ -35,16 +36,13 @@ class ContentsController extends Controller {
 	 * TODO Put this together with update? Currently they're completely equal.
 	 * @return Response
 	 */
-	public function store(Content $content)
+	public function store(StoreContentRequest $request)
 	{
-		if ( ! $content->isValidWith(Input::all()))
-		{
-			return back()->withInput()->withErrors($content->getValidationErrors());
-		}
+		$content = Content::create($request->all());
+		$content->last
 
-		$content->save();
-
-		return route('i.content.edit', ['content' => $content->slug]);
+		dd($content);
+		return route('i.contents.edit', ['content' => $content->slug]);
 	}
 
 

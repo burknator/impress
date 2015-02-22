@@ -20,6 +20,8 @@ class CreateContentsTable extends Migration {
 			$table->text('text');
 			$table->integer('type_id')->unsigned();
 			$table->integer('last_editor')->unsigned();
+			$table->timestamp('published_at');
+			$table->timestamps();
 
 			$table->foreign('type_id')->references('id')->on('types');
 			$table->foreign('last_editor')->references('id')->on('authors');

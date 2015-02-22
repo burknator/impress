@@ -12,7 +12,7 @@
 </div>
 <div class="form-group">
     <label for="type">Type</label>
-    {!! Form::select('type', $types, null, ['class' => 'form-control']) !!}
+    {!! Form::select('type_id', $types, null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     <button type="submit" class="btn btn-primary">Submit</button>

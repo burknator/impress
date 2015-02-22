@@ -14,7 +14,7 @@ interface ValidatableContract
      *
      * @return null|array
      */
-    public function getRules();
+    public static function getRules();
 
     /**
      * @param array $data

@@ -28,16 +28,6 @@ trait Validatable
 	}
 
 	/**
-	 * Get the validation rules for this model.
-	 *
-	 * @return null|array
-	 */
-	public static function getRules()
-	{
-		return static::$validationRules;
-	}
-
-	/**
 	 * @param array $data
 	 * @return bool
 	 */
