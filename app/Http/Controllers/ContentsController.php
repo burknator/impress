@@ -25,7 +25,7 @@ class ContentsController extends Controller {
 	 */
 	public function create()
 	{
-		return view('contents.create')->withTypes(Type::flatList());
+		return view('contents.create');
 	}
 
 

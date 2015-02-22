@@ -146,6 +146,7 @@ return [
 		'Impress\Providers\ConfigServiceProvider',
 		'Impress\Providers\EventServiceProvider',
 		'Impress\Providers\RouteServiceProvider',
+		'Impress\Providers\ComposerServiceProvider'
 
 	],
 
