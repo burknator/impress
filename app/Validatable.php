@@ -1,6 +1,6 @@
-<?php namespace Impress\Model;
+<?php namespace Impress;
 
-trait ValidatableTrait
+trait Validatable
 {
 	protected $validationErrors;
 

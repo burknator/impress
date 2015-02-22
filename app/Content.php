@@ -1,12 +1,12 @@
 <?php namespace Impress;
 
-use Impress\Model\ValidatableInterface;
-use Impress\Model\ValidatableTrait;
+use Impress\Contracts\ValidatableContract;
+use Impress\Validatable;
 use Illuminate\Database\Eloquent\Model;
 
-class Content extends Model implements ValidatableInterface
+class Content extends Model implements ValidatableContract
 {
-	use ValidatableTrait;
+	use Validatable;
 
 	/**
 	 * The database table used by the model.

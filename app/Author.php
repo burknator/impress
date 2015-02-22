@@ -6,11 +6,11 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Impress\Contracts\ValidatableContract;
-use Impress\Model\ValidatableTrait;
+use Impress\Validatable;
 
 class Author extends Model implements AuthenticatableContract, CanResetPasswordContract, ValidatableContract
 {
-	use Authenticatable, CanResetPassword, ValidatableTrait;
+	use Authenticatable, CanResetPassword, Validatable;
 
 	/**
 	 * The database table used by the model.

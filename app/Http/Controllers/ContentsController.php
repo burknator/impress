@@ -12,9 +12,9 @@ class ContentsController extends Controller {
 	 */
 	public function index()
 	{
-		$content = Content::all();
+		$contents = Content::all();
 
-		return view('content.index')->withContents($content);
+		return view('contents.index', compact('contents'));
 	}
 
 
@@ -25,7 +25,7 @@ class ContentsController extends Controller {
 	 */
 	public function create()
 	{
-		return view('content.create')->withTypes(Type::flatList());
+		return view('contents.create')->withTypes(Type::flatList());
 	}
 
 

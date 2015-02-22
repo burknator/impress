@@ -17,9 +17,9 @@ class CreateContentsTable extends Migration {
 			$table->increments('id');
 			$table->string('title');
 			$table->string('slug');
+			$table->text('text');
 			$table->integer('type_id')->unsigned();
 			$table->integer('last_editor')->unsigned();
-			$table->text('body');
 
 			$table->foreign('type_id')->references('id')->on('types');
 			$table->foreign('last_editor')->references('id')->on('authors');
