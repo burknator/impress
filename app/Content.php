@@ -1,8 +1,10 @@
 <?php namespace Impress;
 
+use Illuminate\Database\Eloquent\Model;
 use Impress\Contracts\ValidatableContract;
 use Impress\Validatable;
-use Illuminate\Database\Eloquent\Model;
+use Impress\Author;
+use Impress\Type;
 
 class Content extends Model implements ValidatableContract
 {
@@ -27,7 +29,12 @@ class Content extends Model implements ValidatableContract
 
 	public function type()
 	{
-		return $this->belongsTo('Type');
+		return $this->belongsTo(Type::class);
+	}
+
+	public function author()
+	{
+		return $this->belongsTo(Author::class);
 	}
 
 }

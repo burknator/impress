@@ -1,6 +1,7 @@
 <?php namespace Impress;
 
 use Illuminate\Database\Eloquent\Model;
+use Impress\Content;
 
 class Type extends Model {
 	protected $fillable = ['name'];
@@ -9,7 +10,7 @@ class Type extends Model {
 
 	public function contents()
 	{
-		return $this->hasMany('Content');
+		return $this->hasMany(Content::class);
 	}
 
 	/**

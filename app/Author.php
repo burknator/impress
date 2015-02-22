@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Impress\Contracts\ValidatableContract;
 use Impress\Validatable;
+use Impress\Content;
 
 class Author extends Model implements AuthenticatableContract, CanResetPasswordContract, ValidatableContract
 {
@@ -36,5 +37,10 @@ class Author extends Model implements AuthenticatableContract, CanResetPasswordC
 		'email'    => 'required|email',
 		'password' => 'required|confirmed',
 	];
+
+	public function contents()
+	{
+		return $this->hasMany(Content::class);
+	}
 
 }
