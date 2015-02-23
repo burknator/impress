@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Impress\Content;
 
 class RouteServiceProvider extends ServiceProvider {
 
@@ -24,7 +25,9 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-		//
+		$router->bind('contents', function($slug) {
+			return Content::where('slug', '=', $slug)->firstOrFail();
+		});
 	}
 
 	/**

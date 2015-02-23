@@ -17,7 +17,7 @@ class Content extends Model implements ValidatableContract
 	 */
 	protected $table = 'contents';
 
-	protected $fillable = ['title', 'slug', 'text', 'last_editor', 'type_id'];
+	protected $fillable = ['title', 'slug', 'text', 'type_id'];
 
 	/**
 	 * Get the validation rules for this model.

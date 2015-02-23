@@ -19,12 +19,12 @@ class CreateContentsTable extends Migration {
 			$table->string('slug');
 			$table->text('text');
 			$table->integer('type_id')->unsigned();
-			$table->integer('last_editor')->unsigned();
+			$table->integer('author_id')->unsigned();
 			$table->timestamp('published_at');
 			$table->timestamps();
 
 			$table->foreign('type_id')->references('id')->on('types');
-			$table->foreign('last_editor')->references('id')->on('authors');
+			$table->foreign('author_id')->references('id')->on('authors');
 		});
 	}
 

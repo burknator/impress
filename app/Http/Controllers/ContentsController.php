@@ -3,6 +3,7 @@
 use Impress\Type;
 use Impress\Content;
 use Request;
+use Auth;
 use Impress\Http\Requests\StoreContentRequest;
 
 class ContentsController extends Controller {
@@ -38,11 +39,11 @@ class ContentsController extends Controller {
 	 */
 	public function store(StoreContentRequest $request)
 	{
-		$content = Content::create($request->all());
-		$content->last
+		$content = new Content($request->all());
 
-		dd($content);
-		return route('i.contents.edit', ['content' => $content->slug]);
+		Auth::user()->contents()->save($content);
+
+		return redirect()->route('i.contents.edit', ['contents' => $content->slug]);
 	}
 
 
@@ -66,7 +67,7 @@ class ContentsController extends Controller {
 	 */
 	public function edit(Content $content)
 	{
-		return view('content.edit')->withContent($content)->withTypes(Type::flatList());
+		return view('contents.edit', compact('content'));
 	}
 
 
