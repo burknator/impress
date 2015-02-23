@@ -28,7 +28,7 @@ class CreateCategorycolorsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('categorycolors');
+		Schema::drop('category_colors');
 	}
 
 }

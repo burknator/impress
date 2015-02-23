@@ -20,7 +20,7 @@ class CreateCategoriesTable extends Migration {
 			$table->integer('color_id')->unsigned();
 			$table->timestamps();
 
-			$table->foreign('color_id')->references('id')->on('categorycolors');
+			$table->foreign('color_id')->references('id')->on('category_colors');
 		});
 	}
 
