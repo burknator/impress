@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypesTable extends Migration {
+class CreateCategorycolorsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,12 @@ class CreateTypesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::dropIfExists('types');
-		Schema::create('types', function(Blueprint $table)
+		Schema::dropIfExists('category_colors');
+		Schema::create('category_colors', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name')->unique();
-			$table->integer('sort')->unsigned();
+			$table->string('hex', 6);
+			$table->timestamps();
 		});
 	}
 
@@ -28,7 +28,7 @@ class CreateTypesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('types');
+		Schema::drop('categorycolors');
 	}
 
 }

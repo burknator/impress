@@ -12,6 +12,7 @@ class CreateAuthorsTable extends Migration {
 	 */
 	public function up()
 	{
+		Schema::dropIfExists('authors');
 		Schema::create('authors', function(Blueprint $table)
 		{
 			$table->increments('id');
