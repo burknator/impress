@@ -27,8 +27,9 @@ class Content extends Model implements ValidatableContract
 	public static function getRules()
 	{
 		return [
-			'title'   => 'required|unique:contents',
-			'slug'    => 'required|alpha_dash|unique:contents',
+			'id'      => 'sometimes|required|exists:contents,id',
+			'title'   => 'required|unique:contents,title,#id#',
+			'slug'    => 'required|alpha_dash|unique:contents,slug,#id#',
 			'type_id' => 'required|exists:types,id',
 		];
 	}

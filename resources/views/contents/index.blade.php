@@ -9,7 +9,7 @@
             <div class="col-md-10">
                 @forelse($contents as $content)
                     <ul>
-                        <li>{{ $content->title }}</li>
+                        <li><a href="{!! route('i.contents.edit', ['content' => $content->slug]) !!}">{{ $content->title }}</a></li>
                     </ul>
                 @empty
                     <h3>Go ahead, <a href="{!! route('i.contents.create') !!}">do something</a>!</h3>

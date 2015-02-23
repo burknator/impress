@@ -5,6 +5,7 @@ use Impress\Content;
 use Request;
 use Auth;
 use Impress\Http\Requests\StoreContentRequest;
+use Impress\Http\Requests\UpdateContentRequest;
 
 class ContentsController extends Controller {
 	/**
@@ -34,7 +35,6 @@ class ContentsController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * TODO Put this together with update? Currently they're completely equal.
 	 * @return Response
 	 */
 	public function store(StoreContentRequest $request)
@@ -74,20 +74,15 @@ class ContentsController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * TODO Put this together with store? Currently their completely equal.
-	 * @param Content $content
+	 * @param UpdateContentRequest $request
+	 * @param Content $oldContent
 	 * @return Response
 	 */
-	public function update(Content $content)
+	public function update(UpdateContentRequest $request, Content $oldContent)
 	{
-		if ( ! $content->isValidWith(Request::all()))
-		{
-			return back()->withInput()->withErrors($content->getValidationErrors());
-		}
+		$oldContent->fill($request->all())->save();
 
-		$content->save();
-
-		return back();
+		return redirect()->route('i.contents.edit', ['contents' => $oldContent->slug]);
 	}
 
 
