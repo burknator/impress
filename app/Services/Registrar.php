@@ -25,10 +25,6 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-		if (isset($data['password'])) {
-			$data['password'] = bcrypt($data['password']);
-		}
-
 		return Author::create($data);
 	}
 

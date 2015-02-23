@@ -51,4 +51,14 @@ class Author extends Model implements AuthenticatableContract, CanResetPasswordC
 		return $this->hasMany(Content::class);
 	}
 
+	public function setPasswordAttribute($password)
+	{
+		$this->attributes['password'] = bcrypt($password);
+	}
+
+	public function setPasswordHashedAttribute($hashedPassword)
+	{
+		$this->attributes['password'] = $hashedPassword;
+	}
+
 }
