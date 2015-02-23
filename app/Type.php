@@ -18,15 +18,15 @@ class Type extends Model {
 	 *
 	 * Example:
 	 * [
-	 *      '0' => 'typeName',
-	 *      '1' => 'typeName2',
+	 *      '3' => 'typeName',
+	 *      '7' => 'typeName2',
 	 * ]
 	 *
 	 * @return array
 	 */
 	public static function flatList()
 	{
-		$types = static::all()->toArray();
+		$types = static::all()->sortBy('sort')->toArray();
 		$list = [];
 		foreach ($types as $type)
 		{
