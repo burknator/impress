@@ -1,14 +1,13 @@
 <?php namespace Impress;
 
-use Illuminate\Database\Eloquent\Model;
+use Impress\Model;
 use Impress\Contracts\ValidatableContract;
 use Impress\Validatable;
 use Impress\Author;
 use Impress\Type;
 use Impress\Category;
 
-class Content extends Model implements ValidatableContract
-{
+class Content extends Model implements ValidatableContract {
 	use Validatable;
 
 	/**
@@ -19,6 +18,8 @@ class Content extends Model implements ValidatableContract
 	protected $table = 'contents';
 
 	protected $fillable = ['title', 'slug', 'text', 'type_id', 'category_id'];
+
+	protected $nullable = ['category_id'];
 
 	/**
 	 * Get the validation rules for this model.
@@ -32,7 +33,7 @@ class Content extends Model implements ValidatableContract
 			'title'       => 'required|unique:contents,title,#id#',
 			'slug'        => 'required|alpha_dash|unique:contents,slug,#id#',
 			'type_id'     => 'required|exists:types,id',
-			'category_id' => 'sometimes|required|exists:categories,id',
+			'category_id' => 'exists:categories,id',
 		];
 	}
 

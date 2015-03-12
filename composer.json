@@ -14,6 +14,7 @@
 		"mockery/mockery": "~0.9"
 	},
 	"autoload": {
+		"files": ["bootstrap/helpers.php"],
 		"classmap": [
 			"database"
 		],

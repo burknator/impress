@@ -11,7 +11,7 @@ class ContentAttributesComposer {
     public function __construct()
     {
         $this->types = Type::flatList();
-        $this->categories = array_merge(['' => 'none'], Category::flatList());
+        $this->categories = array_prepend(Category::flatList(), '', 'none');
     }
 
     public function compose(View $view)

@@ -21,7 +21,7 @@ class CreateContentsTable extends Migration {
 			$table->text('text');
 			$table->integer('type_id')->unsigned();
 			$table->integer('author_id')->unsigned();
-			$table->integer('category_id')->unsigned();
+			$table->integer('category_id')->nullable()->unsigned();
 			$table->timestamp('published_at');
 			$table->timestamps();
 
