@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use Impress\Content;
 
 class Type extends Model {
-	use Flattable;
+	use Flatable;
 
 	protected $fillable = ['name'];
 

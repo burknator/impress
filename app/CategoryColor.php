@@ -4,9 +4,11 @@ use Illuminate\Database\Eloquent\Model;
 use Impress\Category;
 
 class CategoryColor extends Model {
-    use Flattable;
+    use Flatable;
 
 	protected $fillable = ['hex'];
+
+    protected static $flattenAttribute = 'hex';
 
     public function category()
     {
