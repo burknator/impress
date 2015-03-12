@@ -1,17 +1,15 @@
 <?php namespace Impress;
 
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Impress\Contracts\ValidatableContract;
-use Impress\Validatable;
+use Impress\Model;
 use Impress\Content;
 
-class Author extends Model implements AuthenticatableContract, CanResetPasswordContract, ValidatableContract
+class Author extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
-	use Authenticatable, CanResetPassword, Validatable;
+	use Authenticatable, CanResetPassword;
 
 	/**
 	 * The database table used by the model.

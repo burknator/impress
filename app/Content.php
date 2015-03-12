@@ -7,8 +7,7 @@ use Impress\Author;
 use Impress\Type;
 use Impress\Category;
 
-class Content extends Model implements ValidatableContract {
-	use Validatable;
+class Content extends Model {
 
 	/**
 	 * The database table used by the model.

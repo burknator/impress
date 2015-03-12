@@ -1,6 +1,6 @@
 <?php namespace Impress;
 
-use Illuminate\Database\Eloquent\Model;
+use Impress\Model;
 use Impress\Category;
 
 class CategoryColor extends Model {
