@@ -3,17 +3,22 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-1">
-                <a href="{!! route('i.contents.create') !!}" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        sorting/filtering
+                    </div>
+                </div>
+                @foreach($contents as $content)
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span>{{ $content->title }}</span>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div class="col-md-10">
-                @forelse($contents as $content)
-                    <ul>
-                        <li><a href="{!! route('i.contents.edit', ['content' => $content->slug]) !!}">{{ $content->title }}</a></li>
-                    </ul>
-                @empty
-                    <h3>Go ahead, <a href="{!! route('i.contents.create') !!}">do something</a>!</h3>
-                @endforelse
+            <div class="col-md-9">
+                <h1>Content preview</h1>
             </div>
         </div>
     </div>
