@@ -3,6 +3,10 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
+    <label for="slug">Slug</label>
+    {!! Form::text('slug', null, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
     <label for="color">Color</label>
     {!! Form::select('color_id', $colors, null, ['class' => 'form-control']) !!}
 </div>

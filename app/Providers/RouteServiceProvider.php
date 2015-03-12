@@ -3,6 +3,7 @@
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Impress\Content;
+use Impress\Category;
 
 class RouteServiceProvider extends ServiceProvider {
 
@@ -27,6 +28,10 @@ class RouteServiceProvider extends ServiceProvider {
 
 		$router->bind('contents', function($slug) {
 			return Content::where('slug', '=', $slug)->firstOrFail();
+		});
+
+		$router->bind('categories', function($slug) {
+			return Category::where('slug', '=', $slug)->firstOrFail();
 		});
 	}
 

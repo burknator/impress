@@ -1,9 +1,7 @@
 <?php namespace Impress\Http\Controllers;
 
-use Impress\Http\Requests;
-use Impress\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+use Impress\Http\Requests\StoreCategoryRequest;
+use Impress\Category;
 
 class CategoryController extends Controller {
 
@@ -14,7 +12,7 @@ class CategoryController extends Controller {
 	 */
 	public function index()
 	{
-		return view('categories.index');
+		return view('categories.index')->withCategories(Category::all());
 	}
 
 	/**
@@ -32,9 +30,11 @@ class CategoryController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreCategoryRequest $request)
 	{
-		//
+		$category = Category::create($request->all());
+
+		return redirect()->route('i.categories.edit', ['categories' => $category->slug]);
 	}
 
 	/**
