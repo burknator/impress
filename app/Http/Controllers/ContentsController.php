@@ -2,10 +2,11 @@
 
 use Impress\Type;
 use Impress\Content;
-use Request;
-use Auth;
 use Impress\Http\Requests\StoreContentRequest;
 use Impress\Http\Requests\UpdateContentRequest;
+
+use Request;
+use Auth;
 
 class ContentsController extends Controller {
 	/**

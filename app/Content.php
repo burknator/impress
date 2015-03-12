@@ -1,10 +1,11 @@
 <?php namespace Impress;
 
-use Carbon\Carbon;
 use Impress\Model;
 use Impress\Author;
 use Impress\Type;
 use Impress\Category;
+
+use Carbon\Carbon;
 
 class Content extends Model {
 

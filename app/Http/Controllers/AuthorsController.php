@@ -1,7 +1,8 @@
 <?php namespace Impress\Http\Controllers;
 
-use Request;
 use Impress\Author;
+
+use Request;
 
 class AuthorsController extends Controller
 {

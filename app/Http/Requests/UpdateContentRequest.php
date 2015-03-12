@@ -1,8 +1,9 @@
 <?php namespace Impress\Http\Requests;
 
+use Auth;
+
 use Impress\Http\Requests\Request;
 use Impress\Content;
-use Auth;
 
 class UpdateContentRequest extends Request {
 

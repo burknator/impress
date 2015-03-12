@@ -1,8 +1,9 @@
 <?php namespace Impress\Http\Composers;
 
-use Illuminate\Contracts\View\View;
 use Impress\Type;
 use Impress\Category;
+
+use Illuminate\Contracts\View\View;
 
 class ContentAttributesComposer {
     protected $types;

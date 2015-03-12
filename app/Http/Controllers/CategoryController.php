@@ -2,6 +2,7 @@
 
 use Impress\Http\Requests\StoreCategoryRequest;
 use Impress\Category;
+
 use Request;
 
 class CategoryController extends Controller {

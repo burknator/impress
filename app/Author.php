@@ -1,11 +1,12 @@
 <?php namespace Impress;
 
+use Impress\Model;
+use Impress\Content;
+
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Impress\Model;
-use Impress\Content;
 
 class Author extends Model implements AuthenticatableContract, CanResetPasswordContract
 {

@@ -1,7 +1,8 @@
 <?php namespace Impress\Http\Composers;
 
-use Illuminate\Contracts\View\View;
 use Impress\CategoryColor;
+
+use Illuminate\Contracts\View\View;
 
 class CategoryAttributesComposer {
     protected $colors;
