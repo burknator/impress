@@ -15,7 +15,7 @@ class ContentsController extends Controller {
 	 */
 	public function index()
 	{
-		$contents = Content::all();
+		$contents = Content::orderBy('created_at', 'desc')->get();
 
 		return view('contents.index', compact('contents'));
 	}
