@@ -2,6 +2,7 @@
 
 use Impress\Http\Requests\StoreCategoryRequest;
 use Impress\Category;
+use Request;
 
 class CategoryController extends Controller {
 
@@ -28,6 +29,7 @@ class CategoryController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param  StoreCategoryRequest $request
 	 * @return Response
 	 */
 	public function store(StoreCategoryRequest $request)
@@ -51,23 +53,25 @@ class CategoryController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Category  $category
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Category $category)
 	{
-		//
+		return view('categories.edit', compact('category'));
 	}
 
 	/**
 	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
+	 * @param  UpdateCategoryRequest $request
+	 * @param  Category              $oldCategory
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(UpdateCategoryRequest $request, Category $oldCategory)
 	{
-		//
+		$oldCategory->fill($request->all())->save();
+
+		return redirect()->back();
 	}
 
 	/**

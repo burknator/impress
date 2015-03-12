@@ -82,7 +82,7 @@ class ContentsController extends Controller {
 	{
 		$oldContent->fill($request->all())->save();
 
-		return redirect()->route('i.contents.edit', ['contents' => $oldContent->slug]);
+		return redirect()->back();
 	}
 
 
