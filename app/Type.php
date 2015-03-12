@@ -15,4 +15,23 @@ class Type extends Model {
 		return $this->hasMany(Content::class);
 	}
 
+    protected static function isType($name)
+    {
+        return in_array($name, static::flatList());
+    }
+
+    /**
+     * Magically find a type via Type::typeName().
+     *
+     * @param  string $name
+     * @param  array  $args
+     * @return Impress\Type
+     */
+    public static function __callStatic($name, $args)
+    {
+        if ( ! static::isType($name)) return parent::__callStatic($name, $args);
+
+        return static::where('name', '=', $name)->firstOrFail();
+    }
+
 }
