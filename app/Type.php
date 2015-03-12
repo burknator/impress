@@ -15,7 +15,7 @@ class Type extends Model {
 		return $this->hasMany(Content::class);
 	}
 
-    protected static function isType($name)
+    public static function exists($name)
     {
         return in_array($name, static::flatList());
     }
@@ -29,7 +29,7 @@ class Type extends Model {
      */
     public static function __callStatic($name, $args)
     {
-        if ( ! static::isType($name)) return parent::__callStatic($name, $args);
+        if ( ! static::exists($name)) return parent::__callStatic($name, $args);
 
         return static::where('name', '=', $name)->firstOrFail();
     }

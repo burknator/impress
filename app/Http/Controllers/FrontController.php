@@ -3,6 +3,7 @@
 use Impress\Http\Requests;
 use Impress\Http\Controllers\Controller;
 use Impress\Type;
+use Impress\Content;
 
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class FrontController extends Controller {
 	public function index()
 	{
 		$postType = Type::post();
-		$posts = $postType->contents()->published()->latest()->get();
+		$posts    = $postType->contents()->published()->latest()->get();
 
 		return view('front.index', compact('posts'));
 	}
@@ -29,7 +30,9 @@ class FrontController extends Controller {
 	 */
 	public function show(Content $content)
 	{
-		//
+		$type = $content->type()->first()->name;
+
+		return view('front.show_' . $type, compact('content'));
 	}
 
 }

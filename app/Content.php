@@ -2,8 +2,6 @@
 
 use Carbon\Carbon;
 use Impress\Model;
-use Impress\Contracts\ValidatableContract;
-use Impress\Validatable;
 use Impress\Author;
 use Impress\Type;
 use Impress\Category;
