@@ -16,7 +16,7 @@ class CreateCategorycolorsTable extends Migration {
 		Schema::create('category_colors', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('hex', 6);
+			$table->string('hex', 6)->unique();
 			$table->timestamps();
 		});
 	}

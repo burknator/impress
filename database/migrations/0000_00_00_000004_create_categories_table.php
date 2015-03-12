@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name')->unique();
+			$table->string('slug')->unique();
 			$table->integer('color_id')->unsigned();
 			$table->timestamps();
 
