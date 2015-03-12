@@ -1,5 +1,6 @@
 <?php namespace Impress;
 
+use Carbon\Carbon;
 use Impress\Model;
 use Impress\Contracts\ValidatableContract;
 use Impress\Validatable;
@@ -19,6 +20,8 @@ class Content extends Model {
 	protected $fillable = ['title', 'slug', 'text', 'type_id', 'category_id'];
 
 	protected $nullable = ['category_id'];
+
+	protected $dates = ['published_at'];
 
 	/**
 	 * Get the validation rules for this model.
@@ -49,6 +52,11 @@ class Content extends Model {
 	public function category()
 	{
 		return $this->belongsTo(Category::class);
+	}
+
+	public function scopePublished($query)
+	{
+		return $query->where('published_at', '<=', Carbon::now());
 	}
 
 }
