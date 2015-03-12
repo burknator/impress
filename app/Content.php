@@ -57,9 +57,4 @@ class Content extends Model {
 		return $query->where('published_at', '<=', Carbon::now());
 	}
 
-	public function scopeLatest($query)
-	{
-		return $query->orderBy('created_at', 'desc');
-	}
-
 }

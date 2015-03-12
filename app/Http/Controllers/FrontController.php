@@ -17,7 +17,7 @@ class FrontController extends Controller {
 	public function index()
 	{
 		$postType = Type::post();
-		$posts    = $postType->contents()->published()->latest()->get();
+		$posts    = $postType->contents()->published()->orderBy('published_at', 'desc')->get();
 
 		return view('front.index', compact('posts'));
 	}
