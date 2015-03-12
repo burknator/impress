@@ -1,12 +1,6 @@
 <?php
 
-Route::bind('content', function($value)
-{
-    return Content::whereSlug($value)->first();
-});
-
-Route::get('/', ['as' => 'home', 'uses' => 'WelcomeController@index']);
-
+// Backend routes, you need to be logged in to access these routes.
 Route::group(['prefix' => 'i', 'middleware' => 'auth'], function()
 {
     Route::get('/', ['as' => 'i.home', 'uses' => 'HomeController@index']);
@@ -16,7 +10,12 @@ Route::group(['prefix' => 'i', 'middleware' => 'auth'], function()
     Route::resource('categories', 'CategoryController');
 });
 
+// Login, logout and password reset routes
 Route::controllers([
-    'auth' => 'Auth\AuthController',
+    'auth'     => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+
+// Frontcontroller routes, this is what the normal visitor sees.
+Route::get('/',           ['as' => 'front.index', 'uses' => 'FrontController@index']);
+Route::get('/{contents}', ['as' => 'front.show',  'uses' => 'FrontController@show']);
