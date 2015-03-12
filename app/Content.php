@@ -18,7 +18,7 @@ class Content extends Model implements ValidatableContract
 	 */
 	protected $table = 'contents';
 
-	protected $fillable = ['title', 'slug', 'text', 'type_id'];
+	protected $fillable = ['title', 'slug', 'text', 'type_id', 'category_id'];
 
 	/**
 	 * Get the validation rules for this model.
@@ -28,10 +28,11 @@ class Content extends Model implements ValidatableContract
 	public static function getRules()
 	{
 		return [
-			'id'      => 'sometimes|required|exists:contents,id',
-			'title'   => 'required|unique:contents,title,#id#',
-			'slug'    => 'required|alpha_dash|unique:contents,slug,#id#',
-			'type_id' => 'required|exists:types,id',
+			'id'          => 'sometimes|required|exists:contents,id',
+			'title'       => 'required|unique:contents,title,#id#',
+			'slug'        => 'required|alpha_dash|unique:contents,slug,#id#',
+			'type_id'     => 'required|exists:types,id',
+			'category_id' => 'sometimes|required|exists:categories,id',
 		];
 	}
 

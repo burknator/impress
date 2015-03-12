@@ -5,6 +5,7 @@ use Impress\CategoryColor;
 use Impress\Content;
 
 class Category extends Model {
+    use Flatable;
 
 	protected $fillable = ['name', 'slug', 'color_id'];
 
