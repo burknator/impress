@@ -6236,9 +6236,6 @@ label,
   margin: 0;
   padding: 0;
 }
-#content-list li {
-  cursor: pointer;
-}
 #content-list li:hover {
   background-color: #eee;
 }

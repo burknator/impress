@@ -7,8 +7,10 @@
                 <ul id="content-list">
                     @foreach ($contents as $content)
                         <li data-id="{{ $content->id }}">
-                            <span class="title">{{ $content->title }}</span>
-                            <span class="published_at">published at {{ $content->published_at->format('d.m.Y') }}</span>
+                            <a href="{{ route('i.contents.edit', [$content->slug]) }}">
+                                <span class="title">{{ $content->title }}</span>
+                                <span class="published_at">published at {{ $content->published_at->format('d.m.Y') }}</span>
+                            </a>
                         </li>
                     @endforeach
                 </ul>
