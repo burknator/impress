@@ -6231,5 +6231,27 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+#content-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#content-list li {
+  cursor: pointer;
+}
+#content-list li:hover {
+  background-color: #eee;
+}
+#content-list li span {
+  display: block;
+}
+#content-list li .title {
+  font-size: 14pt;
+}
+#content-preview-placeholder {
+  color: #eee;
+  text-align: center;
+  margin-top: 3em;
+}
 
 /*# sourceMappingURL=app.css.map */

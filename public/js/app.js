@@ -28742,6 +28742,5 @@ module.exports = warning;
 'use strict';
 
 +function($) {
-
 }(jQuery);
 //# sourceMappingURL=app.js.map

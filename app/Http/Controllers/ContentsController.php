@@ -18,7 +18,11 @@ class ContentsController extends Controller {
 	{
 		$contents = Content::orderBy('created_at', 'desc')->get();
 
-		return view('contents.index', compact('contents'));
+		if (Request::get('json')) {
+			return response()->json($contents->toArray());
+		} else {
+			return view('contents.index', compact('contents'));
+		}
 	}
 
 
