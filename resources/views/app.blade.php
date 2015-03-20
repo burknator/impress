@@ -20,10 +20,12 @@
 					<li><a href="{!! route('i.categories.index') !!}">Categories</a></li>
 				</ul>
 
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">{{ Auth::user()->email }}</a></li>
-					<li><a href="/auth/logout">Logout</a></li>
-				</ul>
+				@unless(Auth::guest())
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">{{ Auth::user()->email }}</a></li>
+						<li><a href="/auth/logout">Logout</a></li>
+					</ul>
+				@endif
 			</div>
 		</div>
 	</nav>
