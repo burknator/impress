@@ -23,7 +23,7 @@
 				@unless(Auth::guest())
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">{{ Auth::user()->email }}</a></li>
-						<li><a href="/auth/logout">Logout</a></li>
+						<li><a href="{!! route('logout') !!}">Logout</a></li>
 					</ul>
 				@endif
 			</div>

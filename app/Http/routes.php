@@ -11,10 +11,19 @@ Route::group(['prefix' => 'i', 'middleware' => 'auth'], function()
 });
 
 // Login, logout and password reset routes
-Route::controllers([
-    'auth'     => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
-]);
+Route::match(['get', 'head'], '/register', 'Auth\AuthController@getRegister');
+Route::post('/register', 'Auth\AuthController@postRegister');
+
+Route::match(['get', 'head'], '/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
+Route::post('/login', 'Auth\AuthController@postLogin');
+
+Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+
+Route::match(['get', 'head'], '/password/email', 'Auth\PasswordController@getEmail');
+Route::post('/password/email', 'Auth\PasswordController@postEmail');
+
+Route::match(['get', 'head'], '/password/reset', 'Auth\PasswordController@getReset');
+Route::post('/password/reset', 'Auth\PasswordController@postReset');
 
 // Frontcontroller routes, this is what the normal visitor sees.
 Route::get('/',           ['as' => 'front.index', 'uses' => 'FrontController@index']);
