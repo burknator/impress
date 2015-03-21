@@ -27,10 +27,11 @@ elixir.extend('reactjs', function(src, dest) {
 
 elixir(function(mix) {
     mix.less('app.less')
-        .reactjs(['main.jsx'])
+        .copy('resources/css', 'public/css')
+        .copy('resources/js/codemirror.js', 'public/js/codemirror.js')
+        .copy('resources/js/mode', 'public/js/mode')
         .scripts([
             'jquery.js',
-            'react.js',
             'main.js'
         ], 'public/js/app.js');
 });

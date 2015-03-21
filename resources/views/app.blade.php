@@ -6,7 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{ $title or 'impress'}}</title>
 
-	<link href="/css/app.css" rel="stylesheet">
+	@section('head-styles')
+		<link href="/css/app.css" rel="stylesheet">
+	@stop
+	@yield('head-styles')
 
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 </head>
@@ -32,6 +35,9 @@
 
 	@yield('content')
 
-	<script src="/js/app.js"></script>
+	@section('foot-scripts')
+		<script src="/js/app.js"></script>
+	@stop
+	@yield('foot-scripts')
 </body>
 </html>
