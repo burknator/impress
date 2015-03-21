@@ -32,6 +32,7 @@ elixir(function(mix) {
         .copy('resources/js/mode', 'public/js/mode')
         .scripts([
             'jquery.js',
+            'showdown.min.js',
             'main.js'
         ], 'public/js/app.js');
 });

@@ -14,8 +14,10 @@
             mode: 'markdown'
         });
 
-        myCodeMirror.on('change', function() {
-
+        var converter = new Showdown.converter();
+        var preview = document.getElementById('content-preview');
+        myCodeMirror.on('change', function(instance) {
+            preview.innerHTML = converter.render(instance.getValue());
         });
     }
 }(jQuery);
