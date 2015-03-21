@@ -5,6 +5,17 @@
         var $input = $('#content-input');
         var $preview = $('content-preview');
 
-        var myCodeMirror = CodeMirror();
+        var ta = document.getElementById('content-input');
+
+        var myCodeMirror = CodeMirror(function(elt) {
+            ta.parentNode.replaceChild(elt, ta);
+        }, {
+            value: ta.value,
+            mode: 'markdown'
+        });
+
+        myCodeMirror.on('change', function() {
+
+        });
     }
 }(jQuery);
