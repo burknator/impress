@@ -30,6 +30,7 @@ elixir(function(mix) {
         .copy('resources/css', 'public/css')
         .copy('resources/js/codemirror.js', 'public/js/codemirror.js')
         .copy('resources/js/mode', 'public/js/mode')
+        .reactjs('main.jsx')
         .scripts([
             'jquery.js',
             'showdown.min.js',

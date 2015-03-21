@@ -1,10 +1,8 @@
 'use strict';
 
 +function($) {
+        console.log('tes');
     if (document.getElementById('content-input') != null) {
-        var $input = $('#content-input');
-        var $preview = $('content-preview');
-
         var ta = document.getElementById('content-input');
 
         var myCodeMirror = CodeMirror(function(elt) {
@@ -17,7 +15,7 @@
         var converter = new Showdown.converter();
         var preview = document.getElementById('content-preview');
         myCodeMirror.on('change', function(instance) {
-            preview.innerHTML = converter.render(instance.getValue());
+            preview.innerHTML = converter.makeHtml(instance.getValue());
         });
     }
 }(jQuery);
