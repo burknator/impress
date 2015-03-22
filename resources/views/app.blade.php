@@ -11,7 +11,6 @@
 	@stop
 	@yield('head-styles')
 
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<nav class="navbar navbar-default">

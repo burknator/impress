@@ -1,8 +1,11 @@
 'use strict';
 
 +function($) {
-        console.log('tes');
     if (document.getElementById('content-input') != null) {
+        $('#content-title').on('keydown keyup', function() {
+            $('#content-slug').val(this.value);
+        });
+
         var ta = document.getElementById('content-input');
 
         var myCodeMirror = CodeMirror(function(elt) {

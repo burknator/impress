@@ -3,12 +3,12 @@
 @endif
 <div class="form-group">
     <label for="title">Title</label>
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+    {!! Form::text('title', null, ['class' => 'form-control', 'id' => 'content-title']) !!}
 </div>
 
 <div class="form-group">
     <label for="slug">Slug</label>
-    {!! Form::text('slug', null, ['class' => 'form-control']) !!}
+    {!! Form::text('slug', null, ['class' => 'form-control', 'id' => 'content-slug']) !!}
 </div>
 
 <div class="row">
