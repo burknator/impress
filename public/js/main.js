@@ -15,10 +15,10 @@
             mode: 'markdown'
         });
 
-        var converter = new Showdown.converter();
+        var md = window.markdownit();
         var preview = document.getElementById('content-preview');
         myCodeMirror.on('change', function(instance) {
-            preview.innerHTML = converter.makeHtml(instance.getValue());
+            preview.innerHTML = md.render(instance.getValue());
         });
     }
 }(jQuery);

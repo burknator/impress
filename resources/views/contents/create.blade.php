@@ -6,6 +6,7 @@
 @stop
 
 @section('foot-scripts')
+    <script src="/js/markdown-it.js"></script>
     <script src="/js/codemirror.js"></script>
     <script src="/js/mode/markdown.js"></script>
     @parent
