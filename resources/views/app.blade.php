@@ -21,8 +21,22 @@
 					<li><a href="#"><span class="glyphicon glyphicon-paperclip"></span> Upload</a></li>
 				</ul>
 
+
 				@unless(Auth::guest())
 					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ route('i.contents.index') }}">Contents</a></li>
+								<li><a href="{{ route('i.categories.index') }}">Categories</a></li>
+								<li><a href="">Tags</a></li>
+								<li><a href="">Media</a></li>
+								<li class="divider"></li>
+								<li><a href="">Users</a></li>
+								<li><a href="">Settings</a></li>
+							</ul>
+						</li>
 						<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->email }}</a></li>
 						<li><a href="{{ route('logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
 					</ul>
@@ -31,24 +45,9 @@
 		</div>
 	</nav>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-2">
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="nav nav-pills nav-stacked">
-							<li><a href="{{ route('i.contents.index') }}">Contents</a></li>
-							<li><a href="{{ route('i.categories.index') }}">Categories</a></li>
-							<li><a href="">Tags</a></li>
-							<li><a href="">Media</a></li>
-							<li><a href="">Settings</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-10">
-				@yield('content')
-			</div>
+	<div class="container">
+		<div class="col-md-12">
+			@yield('content')
 		</div>
 	</div>
 

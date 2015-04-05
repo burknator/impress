@@ -7,6 +7,6 @@ class AuthorsSeeder extends Seeder {
     public function run()
     {
         DB::table('authors')->delete();
-        Author::create(['email' => 'example@example.com', 'password' => 'test']);
+        Author::create(['email' => 'hi@pburke.de', 'password' => 'test']);
     }
 }
