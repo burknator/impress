@@ -1,6 +1,15 @@
-@if (isset($content->id))
-{!! Form::hidden('id', null) !!}
-@endif
+@section('foot-scripts')
+    <script src="/js/markdown-it.js"></script>
+    <script src="/js/codemirror.js"></script>
+    <script src="/js/mode/markdown.js"></script>
+    @parent
+@stop
+
+@section('head-styles')
+    @parent
+    <link rel="stylesheet" href="/css/codemirror.css">
+@stop
+
 <div class="form-group">
     <label for="title">Title</label>
     {!! Form::text('title', null, ['class' => 'form-control', 'id' => 'content-title']) !!}
