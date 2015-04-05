@@ -6488,13 +6488,10 @@ label,
   margin: 0;
   padding: 0;
 }
-#content-list li:hover {
-  background-color: #eee;
-}
-#content-list li span {
+#content-list span {
   display: block;
 }
-#content-list li .title {
+#content-list .title {
   font-size: 14pt;
 }
 #content-preview-placeholder {

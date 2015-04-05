@@ -4,24 +4,37 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <ul id="content-list">
+                <div class="row" id="content-list">
                     @foreach ($contents as $content)
-                        <li data-id="{{ $content->id }}">
+                        <div class="col-md-12">
                             <a href="{{ route('i.contents.edit', [$content->slug]) }}">
                                 <span class="title">{{ $content->title }}</span>
                                 <span class="published_at">published at {{ $content->published_at->format('d.m.Y') }}</span>
                             </a>
-                        </li>
+                        </div>
                     @endforeach
-                </ul>
+                </div>
             </div>
             <div id="content-preview" class="col-md-9">
-                <div id="content-preview-placeholder">
-                    <h1>Content preview</h1>
-                    <p>
-                        Select a post or a page to your left-handside.
-                    </p>
+                <div class="row">
+                    <div class="col-md-5">
+                        <p><a href="#">You</a> created this post <b>two days ago</b>.<br>It was last edited <b>yesterday</b> by <a href="#">John Doe</a>.</p>
+
+                    </div>
+                    <div class="col-md-7">
+                        <div class="pull-right">
+                            <a href="" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Edit this post</a>
+                            <a href="" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                    </div>
                 </div>
+                <div class="row">
+                    <hr>
+                </div>
+                <h1>Nabend.</h1>
+                <p>
+                    Ich bin ein kleiner Beispiel-Post.
+                </p>
             </div>
         </div>
     </div>
