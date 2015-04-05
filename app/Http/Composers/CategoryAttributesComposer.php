@@ -9,7 +9,7 @@ class CategoryAttributesComposer {
 
     public function __construct()
     {
-        $this->colors = CategoryColor::flatList();
+        $this->colors = CategoryColor::all();
     }
 
     public function compose(View $view)

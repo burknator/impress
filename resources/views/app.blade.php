@@ -17,22 +17,40 @@
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="{!! route('i.contents.create') !!}">Compose</a></li>
-					<li><a href="{!! route('i.contents.index') !!}">Contents</a></li>
-					<li><a href="{!! route('i.categories.index') !!}">Categories</a></li>
+					<li><a href="{!! route('i.contents.create') !!}"><span class="glyphicon glyphicon-plus"></span> Compose</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-paperclip"></span> Upload</a></li>
 				</ul>
 
 				@unless(Auth::guest())
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">{{ Auth::user()->email }}</a></li>
-						<li><a href="{!! route('logout') !!}">Logout</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->email }}</a></li>
+						<li><a href="{{ route('logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
 					</ul>
 				@endif
 			</div>
 		</div>
 	</nav>
 
-	@yield('content')
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="nav nav-pills nav-stacked">
+							<li><a href="{{ route('i.contents.index') }}">Contents</a></li>
+							<li><a href="{{ route('i.categories.index') }}">Categories</a></li>
+							<li><a href="">Tags</a></li>
+							<li><a href="">Media</a></li>
+							<li><a href="">Settings</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10">
+				@yield('content')
+			</div>
+		</div>
+	</div>
 
 	@section('foot-scripts')
 		<script src="/js/app.js"></script>

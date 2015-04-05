@@ -13,11 +13,9 @@
 @stop
 
 @section('content')
-    <div class="container">
-        @include('errors')
+    @include('errors')
 
-        {!! Form::open(['method' => 'post', 'route' => 'i.contents.store']) !!}
-            @include('contents._attributes')
-        {!! Form::close() !!}
-    </div>
+    {!! Form::open(['method' => 'post', 'route' => 'i.contents.store']) !!}
+        @include('contents._attributes')
+    {!! Form::close() !!}
 @stop
