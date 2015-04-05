@@ -6488,8 +6488,8 @@ label,
   margin: 0;
   padding: 0;
 }
-#content-list span {
-  display: block;
+#content-list > .row {
+  margin-bottom: 15px;
 }
 #content-list .title {
   font-size: 14pt;

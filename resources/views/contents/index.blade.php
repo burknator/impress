@@ -3,19 +3,30 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <div class="row" id="content-list">
-                    @foreach ($contents as $content)
+            <div id="content-list" class="col-md-4">
+                @foreach ($contents as $content)
+                    <div class="row">
                         <div class="col-md-12">
-                            <a href="{{ route('i.contents.edit', [$content->slug]) }}">
-                                <span class="title">{{ $content->title }}</span>
-                                <span class="published_at">published at {{ $content->published_at->format('d.m.Y') }}</span>
-                            </a>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="glyphicon glyphicon-user"></span>&nbsp;Patrick Burke
+                                </div>
+                                <div class="col-md-5">Today, 12:15 am</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11 col-md-offset-1">
+                                    <b>{{ $content->title }}</b><br>
+                                    {{ str_limit(strip_tags($content->text), 100) }}
+                                </div>
+                            </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
-            <div id="content-preview" class="col-md-9">
+            <div id="content-preview" class="col-md-8">
                 <div class="row">
                     <div class="col-md-5">
                         <p><a href="#">You</a> created this post <b>two days ago</b>.<br>It was last edited <b>yesterday</b> by <a href="#">John Doe</a>.</p>
