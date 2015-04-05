@@ -19,13 +19,18 @@
                 <div class="row">
                     <div class="col-md-5">
                         <p><a href="#">You</a> created this post <b>two days ago</b>.<br>It was last edited <b>yesterday</b> by <a href="#">John Doe</a>.</p>
-
                     </div>
                     <div class="col-md-7">
                         <div class="pull-right">
                             <a href="" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Edit this post</a>
                             <a href="" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        Category: <a href="">Life and everything</a><br>
+                        Tags: <a href="" class="label label-warning">dummy</a> <a href="" class="label label-success">pulp</a>
                     </div>
                 </div>
                 <div class="row">
