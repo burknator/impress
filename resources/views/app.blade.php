@@ -19,6 +19,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{!! route('i.contents.create') !!}"><span class="glyphicon glyphicon-plus"></span> Compose</a></li>
 					<li><a href="#"><span class="glyphicon glyphicon-paperclip"></span> Upload</a></li>
+					<li><a href="{{ route('i.contents.index') }}">Contents</a></li>
 				</ul>
 
 
