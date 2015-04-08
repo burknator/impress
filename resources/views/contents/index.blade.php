@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div id="content-list" class="col-md-4">
                 @foreach ($contents as $content)
@@ -28,20 +28,23 @@
             </div>
             <div id="content-preview" class="col-md-8">
                 <div class="row">
-                    <div class="col-md-5">
-                        <p><a href="#">You</a> created this post <b>two days ago</b>.<br>It was last edited <b>yesterday</b> by <a href="#">John Doe</a>.</p>
+                    <div class="col-md-1">
+                        <a href="#" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-9">
+                        <p>
+                            Created <b>two days ago</b> by <a href="#">you</a>, in <a href="#">Sample category</a>. Last edited <b>yesterday</b> by <a href="#">John Doe</a>.
+                        </p>
+                    </div>
+                    <div class="col-md-2">
                         <div class="pull-right">
-                            <a href="" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Edit this post</a>
-                            <a href="" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
+                            <a href="" class="text-danger">Delete</a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-5">
-                        Category: <a href="">Life and everything</a><br>
-                        Tags: <a href="" class="label label-warning">dummy</a> <a href="" class="label label-success">pulp</a>
+                    <div class="col-md-9 col-md-offset-1">
+                        <a href="" class="label label-default">dummy</a> <a href="" class="label label-default">pulp</a>
                     </div>
                 </div>
                 <div class="row">

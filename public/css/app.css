@@ -6483,11 +6483,6 @@ label,
 .checkbox label {
   font-weight: 300;
 }
-#content-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
 #content-list > .row {
   margin-bottom: 15px;
 }
