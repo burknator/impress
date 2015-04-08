@@ -64,3 +64,17 @@ die Art des Intervalls zum automatischen Speichern der Inhalte des Editors
 auf "alle x Wörter" oder "alle x Sekunden" oder "alle x Minuten"
 festzulegen.
 
+#9
+Das System
+muss
+dem Benutzer die Möglichkeit bieten
+Bilder und andere Medien
+hochzuladen.
+
+#10
+Beim Hochladen von Medien
+muss
+das System
+dem Benutzer die Möglchkeit bieten
+eine Quelle
+anzugeben.
