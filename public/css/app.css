@@ -6483,10 +6483,10 @@ label,
 .checkbox label {
   font-weight: 300;
 }
-#content-list > .row {
+#content-list > .content-entry {
   padding: 15px 0;
 }
-#content-list > .row:hover {
+#content-list > .content-entry:hover {
   background-color: #f5f5f5;
   cursor: pointer;
 }

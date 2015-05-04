@@ -5,7 +5,7 @@
         <div class="row">
             <div id="content-list" class="col-md-4">
                 @forelse ($contents as $content)
-                    <div class="row">
+                    <div class="row content-entry">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-1">
