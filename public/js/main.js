@@ -8,10 +8,7 @@
 
         var ta = document.getElementById('content-input');
 
-        var myCodeMirror = CodeMirror(function(elt) {
-            ta.parentNode.replaceChild(elt, ta);
-        }, {
-            value: ta.value,
+        var myCodeMirror = CodeMirror.fromTextArea(ta, {
             mode: 'markdown'
         });
 
