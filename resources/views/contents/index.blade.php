@@ -4,12 +4,12 @@
     <div class="container-fluid">
         <div class="row">
             <div id="content-list" class="col-md-4">
-                @foreach ($contents as $content)
+                @forelse ($contents as $content)
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-1">
-                                    <input type="checkbox" name="" id="">
+                                    <input type="checkbox" name="" id="{{ $content->id }}">
                                 </div>
                                 <div class="col-md-6">
                                     <span class="glyphicon glyphicon-user"></span>&nbsp;Patrick Burke
@@ -24,7 +24,11 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="row">
+                        <div class="col-md-12">No contents yet.</div>
+                    </div>
+                @endforelse
             </div>
             <div id="content-preview" class="col-md-8">
                 <div class="row">
