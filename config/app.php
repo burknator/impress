@@ -138,6 +138,8 @@ return [
 
 		'Illuminate\Html\HtmlServiceProvider',
 
+		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+
 		/*
 		 * Application Service Providers...
 		 */

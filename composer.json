@@ -11,7 +11,9 @@
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
-		"mockery/mockery": "~0.9"
+		"mockery/mockery": "~0.9",
+		"barryvdh/laravel-ide-helper": "~2.0",
+		"doctrine/dbal": "~2.5"
 	},
 	"autoload": {
 		"files": ["bootstrap/helpers.php"],
