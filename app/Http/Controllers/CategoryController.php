@@ -44,7 +44,7 @@ class CategoryController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function show($id)
@@ -55,7 +55,7 @@ class CategoryController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  Category  $category
+	 * @param  Category $category
 	 * @return Response
 	 */
 	public function edit(Category $category)
@@ -79,7 +79,7 @@ class CategoryController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function destroy($id)

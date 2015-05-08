@@ -1,8 +1,6 @@
 <?php namespace Impress\Http\Requests;
 
 use Auth;
-
-use Impress\Http\Requests\Request;
 use Impress\Content;
 
 class UpdateContentRequest extends Request {
@@ -16,8 +14,12 @@ class UpdateContentRequest extends Request {
 	{
 		$authorsContents = Auth::user()->contents()->get()->toArray();
 
-		foreach ($authorsContents as $content) {
-			if ($content['slug'] == $this->get('slug')) return true;
+		foreach ($authorsContents as $content)
+		{
+			if ($content['slug'] == $this->get('slug'))
+			{
+				return true;
+			}
 		}
 
 		return false;
@@ -32,7 +34,8 @@ class UpdateContentRequest extends Request {
 	{
 		$id = $this->get('id');
 
-		return array_map(function($rule) use ($id) {
+		return array_map(function ($rule) use ($id)
+		{
 			return str_replace('#id#', $id, $rule);
 		}, Content::getRules());
 	}

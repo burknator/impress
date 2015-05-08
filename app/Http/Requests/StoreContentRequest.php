@@ -1,6 +1,5 @@
 <?php namespace Impress\Http\Requests;
 
-use Impress\Http\Requests\Request;
 use Impress\Content;
 
 class StoreContentRequest extends Request {

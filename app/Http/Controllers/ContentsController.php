@@ -18,9 +18,11 @@ class ContentsController extends Controller {
 	{
 		$contents = Content::orderBy('created_at', 'desc')->get();
 
-		if (Request::get('json')) {
+		if (Request::get('json'))
+		{
 			return response()->json($contents->toArray());
-		} else {
+		} else
+		{
 			return view('contents.index', compact('contents'));
 		}
 	}
@@ -55,7 +57,7 @@ class ContentsController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function show($id)
@@ -80,7 +82,7 @@ class ContentsController extends Controller {
 	 * Update the specified resource in storage.
 	 *
 	 * @param UpdateContentRequest $request
-	 * @param Content $oldContent
+	 * @param Content              $oldContent
 	 * @return Response
 	 */
 	public function update(UpdateContentRequest $request, Content $oldContent)
@@ -94,7 +96,7 @@ class ContentsController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function destroy($id)

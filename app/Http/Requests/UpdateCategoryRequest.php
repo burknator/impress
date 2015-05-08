@@ -1,6 +1,5 @@
 <?php namespace Impress\Http\Requests;
 
-use Impress\Http\Requests\Request;
 use Impress\Category;
 
 class UpdateCategoryRequest extends Request {

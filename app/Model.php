@@ -1,36 +1,36 @@
 <?php namespace Impress;
 
-use Illuminate\Database\Eloquent;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Model extends Eloquent\Model {
+class Model extends Eloquent {
 
-    protected $nullable = [];
+	protected $nullable = [];
 
-    /**
-    * Listen for save event
-    */
-    protected static function boot()
-    {
-        parent::boot();
+	/**
+	 * Listen for save event
+	 */
+	protected static function boot()
+	{
+		parent::boot();
 
-        static::saving(function($model)
-        {
-            self::setNullables($model);
-        });
-    }
+		static::saving(function ($model)
+		{
+			self::setNullables($model);
+		});
+	}
 
-    /**
-    * Set empty nullable fields to null
-    * @param Eloquent\Model $model
-    */
-    protected static function setNullables($model)
-    {
-        foreach($model->nullable as $field)
-        {
-            if(empty($model->{$field}))
-            {
-                $model->{$field} = null;
-            }
-        }
-    }
+	/**
+	 * Set empty nullable fields to null
+	 * @param \Illuminate\Database\Eloquent\Model $model
+	 */
+	protected static function setNullables($model)
+	{
+		foreach ($model->nullable as $field)
+		{
+			if (empty($model->{$field}))
+			{
+				$model->{$field} = null;
+			}
+		}
+	}
 }

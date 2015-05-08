@@ -1,11 +1,8 @@
 <?php namespace Impress\Http\Controllers;
 
-use Impress\Http\Requests;
-use Impress\Http\Controllers\Controller;
-use Impress\Type;
 use Impress\Content;
-
-use Illuminate\Http\Request;
+use Impress\Http\Requests;
+use Impress\Type;
 
 class FrontController extends Controller {
 
@@ -17,7 +14,7 @@ class FrontController extends Controller {
 	public function index()
 	{
 		$postType = Type::post();
-		$posts    = $postType->contents()->published()->orderBy('published_at', 'desc')->get();
+		$posts = $postType->contents()->published()->orderBy('published_at', 'desc')->get();
 
 		return view('front.index', compact('posts'));
 	}

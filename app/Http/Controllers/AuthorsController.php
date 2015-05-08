@@ -4,8 +4,7 @@ use Impress\Author;
 
 use Request;
 
-class AuthorsController extends Controller
-{
+class AuthorsController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -36,7 +35,7 @@ class AuthorsController extends Controller
 	 */
 	public function store(Author $author)
 	{
-		if ( ! $author->isValidWith(Request::all()))
+		if (!$author->isValidWith(Request::all()))
 		{
 			return back()->withInput()->withErrors($author->getValidationErrors());
 		}
@@ -45,7 +44,10 @@ class AuthorsController extends Controller
 
 		$returnRoute = session('returnTo');
 
-		if (empty($returnRoute)) $returnRoute = 'i.author.index';
+		if (empty($returnRoute))
+		{
+			$returnRoute = 'i.author.index';
+		}
 
 		return route($returnRoute);
 	}

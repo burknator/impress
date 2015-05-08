@@ -1,19 +1,18 @@
 <?php namespace Impress\Http\Composers;
 
+use Illuminate\Contracts\View\View;
 use Impress\CategoryColor;
 
-use Illuminate\Contracts\View\View;
-
 class CategoryAttributesComposer {
-    protected $colors;
+	protected $colors;
 
-    public function __construct()
-    {
-        $this->colors = CategoryColor::all();
-    }
+	public function __construct()
+	{
+		$this->colors = CategoryColor::all();
+	}
 
-    public function compose(View $view)
-    {
-        $view->with('colors', $this->colors);
-    }
+	public function compose(View $view)
+	{
+		$view->with('colors', $this->colors);
+	}
 }
