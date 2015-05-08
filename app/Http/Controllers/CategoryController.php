@@ -1,6 +1,7 @@
 <?php namespace Impress\Http\Controllers;
 
 use Impress\Http\Requests\StoreCategoryRequest;
+use Impress\Http\Requests\UpdateCategoryRequest;
 use Impress\Category;
 
 use Request;
@@ -65,12 +66,12 @@ class CategoryController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 * @param  UpdateCategoryRequest $request
-	 * @param  Category              $oldCategory
+	 * @param  Category              $category
 	 * @return Response
 	 */
-	public function update(UpdateCategoryRequest $request, Category $oldCategory)
+	public function update(UpdateCategoryRequest $request, Category $category)
 	{
-		$oldCategory->fill($request->all())->save();
+		$category->fill($request->all())->save();
 
 		return redirect()->back();
 	}

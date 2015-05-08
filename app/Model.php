@@ -21,7 +21,7 @@ class Model extends Eloquent\Model {
 
     /**
     * Set empty nullable fields to null
-    * @param Illuminate\Database\Eloquent\Model $model
+    * @param Eloquent\Model $model
     */
     protected static function setNullables($model)
     {
