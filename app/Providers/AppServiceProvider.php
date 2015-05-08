@@ -30,11 +30,6 @@ class AppServiceProvider extends ServiceProvider {
 			'Illuminate\Contracts\Auth\Registrar',
 			'Impress\Services\Registrar'
 		);
-
-		$this->app->bind('ModelValidator', function ()
-		{
-			return new ModelValidator(app('validator'));
-		});
 	}
 
 }
