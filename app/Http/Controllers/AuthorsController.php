@@ -1,8 +1,8 @@
 <?php namespace Impress\Http\Controllers;
 
 use Impress\Author;
-
-use Request;
+use Impress\Http\Requests\StoreAuthorRequest;
+use Impress\Http\Requests\UpdateAuthorRequest;
 
 class AuthorsController extends Controller {
 	/**
@@ -12,7 +12,7 @@ class AuthorsController extends Controller {
 	 */
 	public function index()
 	{
-		return view('back.author')->with('authors', Author::all());
+		return view('authors.index')->with('authors', Author::all());
 	}
 
 
@@ -23,33 +23,22 @@ class AuthorsController extends Controller {
 	 */
 	public function create()
 	{
-		dd('test');
+		return view('authors.create');
 	}
 
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  Author $author
-	 * @return Response
+	 * @param \Impress\Http\Requests\StoreAuthorRequest $request
+	 * @param  Author                                   $author
+	 * @return \Impress\Http\Controllers\Response
 	 */
-	public function store(Author $author)
+	public function store(StoreAuthorRequest $request, Author $author)
 	{
-		if (!$author->isValidWith(Request::all()))
-		{
-			return back()->withInput()->withErrors($author->getValidationErrors());
-		}
+		$author->fill($request->all())->save();
 
-		$author->save();
-
-		$returnRoute = session('returnTo');
-
-		if (empty($returnRoute))
-		{
-			$returnRoute = 'i.author.index';
-		}
-
-		return route($returnRoute);
+		return redirect()->route('i.authors.edit', [$author->id]);
 	}
 
 
@@ -68,24 +57,29 @@ class AuthorsController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int $id
-	 * @return Response
+	 * @param \Impress\Author $author
+	 * @return \Impress\Http\Controllers\Response
+	 * @internal param int $id
 	 */
-	public function edit($id)
+	public function edit(Author $author)
 	{
-		//
+		return view('authors.edit')->with('author', $author);
 	}
 
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int $id
-	 * @return Response
+	 * @param \Impress\Http\Requests\UpdateAuthorRequest $request
+	 * @param \Impress\Author                            $author
+	 * @return \Impress\Http\Controllers\Response
+	 * @internal param int $id
 	 */
-	public function update($id)
+	public function update(UpdateAuthorRequest $request, Author $author)
 	{
-		//
+		$author->fill($request->all())->save();
+
+		return redirect()->route('i.authors.edit', [$author->id]);
 	}
 
 

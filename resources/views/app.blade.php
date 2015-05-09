@@ -31,17 +31,16 @@
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ route('i.contents.index') }}">Contents</a></li>
 								<li><a href="{{ route('i.categories.index') }}">Categories</a></li>
-								<li><a href="">Tags</a></li>
 								<li><a href="">Media</a></li>
 								<li class="divider"></li>
-								<li><a href="">Users</a></li>
+								<li><a href="{{ route('i.authors.index') }}">Authors</a></li>
 								<li><a href="">Settings</a></li>
 							</ul>
 						</li>
 						<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->email }}</a></li>
 						<li><a href="{{ route('logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
 					</ul>
-				@endif
+				@endunless
 			</div>
 		</div>
 	</nav>

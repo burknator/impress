@@ -4,6 +4,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Impress\Content;
 use Impress\Category;
+use Impress\Author;
 
 class RouteServiceProvider extends ServiceProvider {
 
@@ -32,6 +33,10 @@ class RouteServiceProvider extends ServiceProvider {
 
 		$router->bind('categories', function($slug) {
 			return Category::where('slug', '=', $slug)->firstOrFail();
+		});
+
+		$router->bind('authors', function($id) {
+			return Author::where('id', '=', $id)->firstOrFail();
 		});
 	}
 

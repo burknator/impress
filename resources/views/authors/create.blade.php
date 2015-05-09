@@ -1,0 +1,12 @@
+@extends('app')
+
+@section('content')
+    <div class="container">
+        @include('errors')
+        <h1>Add a new author</h1>
+
+        {!! Form::open(['method' => 'post', 'route' => 'i.authors.store']) !!}
+        @include('authors._attributes')
+        {!! Form::close() !!}
+    </div>
+@stop

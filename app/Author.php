@@ -32,8 +32,14 @@ class Author extends Model implements AuthenticatableContract, CanResetPasswordC
 	protected $fillable = ['email', 'password'];
 
 	protected static $rules = [
-		'email'    => 'required|email',
+		'email'    => 'required|email|unique:authors,email',
 		'password' => 'required|confirmed',
+	];
+
+	protected static $updateRules = [
+		'id'       => 'required|exists:authors,id',
+		'email'    => 'required|email|unique:authors,email,#id#',
+		'password' => 'confirmed',
 	];
 
 	public function contents()
