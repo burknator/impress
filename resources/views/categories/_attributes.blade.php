@@ -1,3 +1,4 @@
+{!! Form::hidden('id') !!}
 <div class="category-form">
 	<div class="form-group">
 		{!! Form::text('name', null, ['class' => 'form-control col-md-12']) !!}

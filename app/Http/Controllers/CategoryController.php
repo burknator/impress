@@ -71,9 +71,11 @@ class CategoryController extends Controller {
 	 */
 	public function update(UpdateCategoryRequest $request, Category $category)
 	{
+		// TODO Implement color handling. The user should be able to create new colors here too.
+
 		$category->fill($request->all())->save();
 
-		return redirect()->back();
+		return redirect()->route('i.categories.edit', [$category->slug]);
 	}
 
 	/**

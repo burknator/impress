@@ -1,8 +1,8 @@
 <?php namespace Impress;
 
-use Impress\Model;
 use Impress\CategoryColor;
 use Impress\Content;
+use Impress\Model;
 
 class Category extends Model {
 	use Flatable;
@@ -19,13 +19,17 @@ class Category extends Model {
 		return $this->hasMany(Content::class);
 	}
 
-	public static function getRules()
-	{
-		return [
-			'name'     => 'required|unique:categories,name',
-			'slug'     => 'required|unique:categories,slug|alpha_dash',
-			'color_id' => 'required|exists:category_colors,id'
-		];
-	}
+	protected static $rules = [
+		'name'     => 'required|unique:categories,name',
+		'slug'     => 'required|unique:categories,slug|alpha_dash',
+		'color_id' => 'required|exists:category_colors,id'
+	];
+
+	protected static $updateRules = [
+		'id'       => 'required|exists:categories,id',
+		'name'     => 'required|unique:categories,name,#id#',
+		'slug'     => 'required|unique:categories,slug,#id#|alpha_dash',
+		'color_id' => 'required|exists:category_colors,id'
+	];
 
 }

@@ -16,10 +16,7 @@ class UpdateContentRequest extends Request {
 
 		foreach ($authorsContents as $content)
 		{
-			if ($content['slug'] == $this->get('slug'))
-			{
-				return true;
-			}
+			if ($content['id'] == $this->get('id')) return true;
 		}
 
 		return false;
@@ -32,12 +29,7 @@ class UpdateContentRequest extends Request {
 	 */
 	public function rules()
 	{
-		$id = $this->get('id');
-
-		return array_map(function ($rule) use ($id)
-		{
-			return str_replace('#id#', $id, $rule);
-		}, Content::getRules());
+		return Content::getUpdateRules($this->get('id'));
 	}
 
 }

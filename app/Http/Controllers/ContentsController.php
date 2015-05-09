@@ -82,14 +82,14 @@ class ContentsController extends Controller {
 	 * Update the specified resource in storage.
 	 *
 	 * @param UpdateContentRequest $request
-	 * @param Content              $oldContent
+	 * @param Content              $content
 	 * @return Response
 	 */
-	public function update(UpdateContentRequest $request, Content $oldContent)
+	public function update(UpdateContentRequest $request, Content $content)
 	{
-		$oldContent->fill($request->all())->save();
+		$content->fill($request->all())->save();
 
-		return redirect()->back();
+		return redirect()->route('i.contents.edit', [$content->slug]);
 	}
 
 

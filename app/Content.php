@@ -22,21 +22,20 @@ class Content extends Model {
 
 	protected $dates = ['published_at'];
 
-	/**
-	 * Get the validation rules for this model.
-	 *
-	 * @return array
-	 */
-	public static function getRules()
-	{
-		return [
-			'id'          => 'sometimes|required|exists:contents,id',
-			'title'       => 'required|unique:contents,title,#id#',
-			'slug'        => 'required|alpha_dash|unique:contents,slug,#id#',
-			'type_id'     => 'required|exists:types,id',
-			'category_id' => 'exists:categories,id',
-		];
-	}
+	protected static $rules = [
+		'title'       => 'required|unique:contents,title',
+		'slug'        => 'required|alpha_dash|unique:contents,slug',
+		'type_id'     => 'required|exists:types,id',
+		'category_id' => 'exists:categories,id',
+	];
+
+	protected static $updateRules = [
+		'id'          => 'required|exists:contents,id',
+		'title'       => 'required|unique:contents,title,#id#',
+		'slug'        => 'required|alpha_dash|unique:contents,slug,#id#',
+		'type_id'     => 'required|exists:types,id',
+		'category_id' => 'exists:categories,id',
+	];
 
 	public function type()
 	{

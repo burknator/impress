@@ -21,7 +21,7 @@ class UpdateCategoryRequest extends Request {
 	 */
 	public function rules()
 	{
-		return Category::getRules();
+		return Category::getUpdateRules($this->get('id'));
 	}
 
 }

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/codemirror.css">
 @stop
 
+{!! Form::hidden('id') !!}
 <div class="form-group">
     <label for="title">Title</label>
     {!! Form::text('title', null, ['class' => 'form-control', 'id' => 'content-title']) !!}
