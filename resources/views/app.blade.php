@@ -48,7 +48,11 @@
 	@yield('content')
 
 	@section('foot-scripts')
-		<script src="/js/app.js"></script>
+        <script src="/jspm_packages/system.js"></script>
+        <script src="/jspm-config.js"></script>
+        <script>
+            System.import('js/main');
+        </script>
 	@stop
 	@yield('foot-scripts')
 </body>

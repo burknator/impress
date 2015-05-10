@@ -1,5 +1,6 @@
 /vendor
 /node_modules
+/public/jspm_packages
 .env
 .DS_Store
 .idea
