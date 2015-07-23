@@ -9,21 +9,21 @@ alle Einstellungen
 in einer Text-Datei speichern.
 
 #2
-Beim Erstellen von Inhalten
+Beim Verfassen von Inhalten
 muss
 das System
 einen Titel
 erfassen.
 
 #3
-Beim Erstellen von Inhalten
+Beim Verfassen von Inhalten
 muss
 das System
 eine URL-freundliche Version des Titels
 erfassen.
 
 #4
-Beim Erstellen von Inhalten
+Beim Verfassen von Inhalten
 muss
 das System
 eine konvertierte Vorschau des Textes
@@ -31,7 +31,7 @@ in Echtzeit
 anzeigen.
 
 #5
-Beim Erstellen von Inhalten
+Beim Verfassen von Inhalten
 muss
 das System
 den Inhalt
@@ -54,6 +54,8 @@ dem Benutzer die Möglichkeit bieten
 die Art der Scrollbars in dem Editor
 auf "nativ" oder "overlay"
 festlegen zu können.
+
+Kommentar: Overlay ist hier eine Scrollbar wie man sie z.B. von Mac OSX kennt. Das Einstellen dieser Option auf overlay macht also nur Sinn, wenn man Windows oder Linux benutzt (bei letzterem natürlich nur bedingt...).
 
 #8
 In den Einstellungen
@@ -78,3 +80,107 @@ das System
 dem Benutzer die Möglchkeit bieten
 eine Quelle
 anzugeben.
+
+#11
+Das System
+muss
+während des Verfassens eines Textes
+den Inhalt
+auf Best Practices für Formulierungen überprüfen.
+
+#12
+Das System
+soll
+den Autor
+während des Schreibens
+nicht mit Warnungen zu Text Korrekturen ablenken.
+
+#13
+Das System
+muss,
+um ein flüssiges Interface beim schreiben zu gewährleisten,
+die Text Überprüfungen parallel zum Verfassen durchführen.
+
+#14
+Das System
+muss
+dem Benutzer die Möglichkeit bieten
+ausgewählte Features zur Text Überprüfung zu deaktivieren.
+
+#15
+Das System
+muss
+dem Benutzer die Möglichkeit bieten
+die Überprüfung des Inhaltes zu deaktivieren.
+
+#16
+Das System
+soll
+dem Benutzer die Möglichkeit bieten
+einen Energie-Spar-Modus zu aktivieren.
+
+#17
+Das System
+soll
+im eingeschaltetem Energie-Spar-Modus
+die Inhalts-Überprüfungen bis zum nächsten Login deaktivieren.
+
+#18
+Das System
+muss
+es dem Benutzer ermöglichen Texte bestimmter Textformen zu erstellen.
+
+#19
+Das System
+muss
+es dem Benutzer ermöglichen Textformen
+zu erstellen.
+
+#20
+Das Interface
+muss
+den Shneiderman-Rules
+genügen.
+
+#21
+Nach dem der Benutzer sich registriert hat
+muss
+er sich anmelden können.
+
+#22
+Der Benutzer
+muss
+sich registrieren können.
+
+#23
+Der Benutzer
+muss
+Tags
+erstellen und bearbeiten können.
+
+#24
+Der Benutzer
+muss
+einem Text Tags zuweisen können.
+
+#25
+Der Benutzer
+muss
+einen Text einer Kategorie zuordnen können.
+
+#26
+Der Benutzer
+muss
+Kategorien erstellen können.
+
+#27
+Der Benutzer
+muss
+beim Erstellen von Tags
+eine Farbe angeben können.
+
+#28
+Das System
+muss
+immer wenn Tags ausgegeben werden
+die Tag-Farbe ausgeben.
