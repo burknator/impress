@@ -1,11 +1,16 @@
 @extends('app')
 
-@section('content')
-    <div class="container">
-		<h1>Create a new Category</h1>
+@section('foot-scripts')
+    @parent
 
-        {!! Form::open(['method' => 'post', 'route' => 'i.categories.store']) !!}
-        @include('categories._attributes')
-        {!! Form::close() !!}
-    </div>
+    <script>
+        System.import('js/components/category/create').then(function(CreateCategory) {
+            CreateCategory.setState({'test': true});
+            CreateCategory.render(document.getElementById('create-category'));
+        });
+    </script>
+@stop
+
+@section('content')
+    <div id="create-category" class="container"></div>
 @stop

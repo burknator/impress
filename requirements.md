@@ -88,13 +88,6 @@ während des Verfassens eines Textes
 den Inhalt
 auf Best Practices für Formulierungen überprüfen.
 
-#12
-Das System
-soll
-den Autor
-während des Schreibens
-nicht mit Warnungen zu Text Korrekturen ablenken.
-
 #13
 Das System
 muss,
@@ -179,8 +172,83 @@ muss
 beim Erstellen von Tags
 eine Farbe angeben können.
 
-#28
+#29
+In den Einstellungen
+muss
+das System
+dem Benutzer die Möglichkeit bieten
+ein Standard Seiten-Titel Format festzulegen.
+
+#30
+Beim Eingeben eines Standard Seiten-Titel Formats
+muss
+das System
+mögliche Platzhalter in Form einer Auto-Vervollständigung anbieten.
+
+#31
+Beim Eingeben eines Standard Seiten-Titel Formats
+muss
+das System
+ein Standard Beispiel anzeigen.
+
+#32
+Beim Eingeben eines Standard Seiten-Titel Formats
+muss
+das System
+vorhandene Inhalte als Beispiel verwenden.
+
+#33
 Das System
 muss
-immer wenn Tags ausgegeben werden
-die Tag-Farbe ausgeben.
+UTF-Zeichen wie Herzen
+im Title von Inhalten unterstützen.
+
+#34
+Das System
+muss
+sich automatisch Aktualisieren können.
+
+#35
+Das System
+muss
+über das Admin-Interface aktualisiert werden können.
+
+#36
+In den Einstellungen
+muss
+das System
+dem Benutzer die Möglichkeit bieten
+eine Zeitzone einzustellen.
+
+#37
+Beim Einstellen der Zeitzone
+muss
+das System
+während des Tippens eine Auto-Vervollständigung für Städte anbieten.
+
+#38
+Beim Einstellen der Zeitzone
+muss
+das System
+dem Benutzer die Möglichkeit bieten
+die Zeitzone über die derzeitige Geo-Location zu erfassen.
+
+#39
+Das System
+muss
+die korrekte Zeitzone anhand der System-Zeit
+erkennen.
+
+#40
+In den Einstellungen
+muss
+das System
+dem Benutzer die Möglichkeit bieten
+ein Datumsformat einzustellen.
+
+#41
+In den Einstellungen
+muss
+das System
+dem Benutzer die Möglichkeit bieten
+ein Zeitformat einzustellen.

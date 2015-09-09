@@ -7,54 +7,54 @@ use Impress\Category;
 
 use Carbon\Carbon;
 
-class Content extends Model {
+class Content extends Model
+{
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'contents';
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'contents';
 
-	protected $fillable = ['title', 'slug', 'text', 'type_id', 'category_id'];
+    protected $fillable = ['title', 'slug', 'text', 'type_id', 'category_id'];
 
-	protected $nullable = ['category_id'];
+    protected $nullable = ['category_id'];
 
-	protected $dates = ['published_at'];
+    protected $dates = ['published_at'];
 
-	protected static $rules = [
-		'title'       => 'required|unique:contents,title',
-		'slug'        => 'required|alpha_dash|unique:contents,slug',
-		'type_id'     => 'required|exists:types,id',
-		'category_id' => 'exists:categories,id',
-	];
+    protected static $rules = [
+        'title'       => 'required|unique:contents,title',
+        'slug'        => 'required|alpha_dash|unique:contents,slug',
+        'type_id'     => 'required|exists:types,id',
+        'category_id' => 'exists:categories,id',
+    ];
 
-	protected static $updateRules = [
-		'id'          => 'required|exists:contents,id',
-		'title'       => 'required|unique:contents,title,#id#',
-		'slug'        => 'required|alpha_dash|unique:contents,slug,#id#',
-		'type_id'     => 'required|exists:types,id',
-		'category_id' => 'exists:categories,id',
-	];
+    protected static $updateRules = [
+        'id'          => 'required|exists:contents,id',
+        'title'       => 'required|unique:contents,title,#id#',
+        'slug'        => 'required|alpha_dash|unique:contents,slug,#id#',
+        'type_id'     => 'required|exists:types,id',
+        'category_id' => 'exists:categories,id',
+    ];
 
-	public function type()
-	{
-		return $this->belongsTo(Type::class);
-	}
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 
-	public function author()
-	{
-		return $this->belongsTo(Author::class);
-	}
+    public function author()
+    {
+        return $this->belongsTo(Author::class);
+    }
 
-	public function category()
-	{
-		return $this->belongsTo(Category::class);
-	}
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
-	public function scopePublished($query)
-	{
-		return $query->where('published_at', '<=', Carbon::now());
-	}
-
+    public function scopePublished($query)
+    {
+        return $query->where('published_at', '<=', Carbon::now());
+    }
 }

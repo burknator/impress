@@ -8,53 +8,55 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class Author extends Model implements AuthenticatableContract, CanResetPasswordContract {
-	use Authenticatable, CanResetPassword;
+class Author extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
+    use Authenticatable, CanResetPassword;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'authors';
+    // Just me typing silly stuff inhere...
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = ['password', 'remember_token'];
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'authors';
 
-	/**
-	 * Massassignable attributes of this model.
-	 * @var array
-	 */
-	protected $fillable = ['email', 'password'];
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = ['password', 'remember_token'];
 
-	protected static $rules = [
-		'email'    => 'required|email|unique:authors,email',
-		'password' => 'required|confirmed',
-	];
+    /**
+     * Massassignable attributes of this model.
+     * @var array
+     */
+    protected $fillable = ['email', 'password'];
 
-	protected static $updateRules = [
-		'id'       => 'required|exists:authors,id',
-		'email'    => 'required|email|unique:authors,email,#id#',
-		'password' => 'confirmed',
-	];
+    protected static $rules = [
+        'email'    => 'required|email|unique:authors,email',
+        'password' => 'required|confirmed',
+    ];
 
-	public function contents()
-	{
-		return $this->hasMany(Content::class);
-	}
+    protected static $updateRules = [
+        'id'       => 'required|exists:authors,id',
+        'email'    => 'required|email|unique:authors,email,#id#',
+        'password' => 'confirmed',
+    ];
 
-	public function setPasswordAttribute($password)
-	{
-		$this->attributes['password'] = bcrypt($password);
-	}
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
 
-	public function setPasswordHashedAttribute($hashedPassword)
-	{
-		$this->attributes['password'] = $hashedPassword;
-	}
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
 
+    public function setPasswordHashedAttribute($hashedPassword)
+    {
+        $this->attributes['password'] = $hashedPassword;
+    }
 }

@@ -74,10 +74,10 @@ class CategoryController extends Controller {
 		// TODO Implement color handling. The user should be able to create new colors here too.
 
 		$category->fill($request->all())->save();
-
+		
 		return redirect()->route('i.categories.edit', [$category->slug]);
 	}
-
+	
 	/**
 	 * Remove the specified resource from storage.
 	 *

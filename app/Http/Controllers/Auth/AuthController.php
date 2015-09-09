@@ -1,10 +1,12 @@
 <?php namespace Impress\Http\Controllers\Auth;
 
 use Impress\Http\Controllers\Controller;
+use Impress\Author;
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Validator;
 
 class AuthController extends Controller {
 
@@ -36,15 +38,34 @@ class AuthController extends Controller {
 	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
 	 * @return void
 	 */
-	public function __construct(Guard $auth, Registrar $registrar)
+	public function __construct()
 	{
-		$this->auth      = $auth;
-		$this->registrar = $registrar;
-
 		$this->redirectPath = route('i.home');
 		$this->loginPath    = route('login');
 
 		$this->middleware('guest', ['except' => 'getLogout']);
+	}
+
+	/**
+	 * Get a validator for an incoming registration request.
+	 *
+	 * @param  array  $data
+	 * @return \Illuminate\Contracts\Validation\Validator
+	 */
+	public function validator(array $data)
+	{
+		return Validator::make($data, Author::getRules());
+	}
+
+	/**
+	 * Create a new user instance after a valid registration.
+	 *
+	 * @param  array  $data
+	 * @return Author
+	 */
+	public function create(array $data)
+	{
+		return Author::create($data);
 	}
 
 }

@@ -1,7 +1,7 @@
-var gulp   = require('gulp');
-var elixir = require('laravel-elixir');
+var gulp   = require('gulp'),
+    elixir = require('laravel-elixir');
 
-elixir(function(mix) {
+elixir(function (mix) {
     mix.less('app.less')
         .copy('resources/css', 'public/css')
         .copy('resources/js', 'public/js')
