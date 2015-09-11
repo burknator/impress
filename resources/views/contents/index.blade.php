@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div id="content-list" class="col-md-4">
-                @forelse ($contents as $content)
+                @foreach ($contents as $content)
                     <div class="row content-entry">
                         <div class="col-md-12">
                             <div class="row">
@@ -12,52 +12,50 @@
                                     <input type="checkbox" name="" id="{{ $content->id }}">
                                 </div>
                                 <div class="col-md-6">
-                                    <span class="glyphicon glyphicon-user"></span>&nbsp;Patrick Burke
+                                    <span class="glyphicon glyphicon-user"></span>&nbsp;{{ $content->author->email }}
                                 </div>
-                                <div class="col-md-5">Today, 12:15 am</div>
+                                <div class="col-md-5">{{ $content->created_at }}</div>
                             </div>
                             <div class="row">
                                 <div class="col-md-11 col-md-offset-1">
-                                    <b>{{ $content->title }}</b><br>
+                                    <a href="{{ route('i.contents.index') }}?preview={{ $content->id }}"><b>{{ $content->title }}</b></a><br>
                                     {{ str_limit(strip_tags($content->text), 100) }}
                                 </div>
                             </div>
                         </div>
                     </div>
-                @empty
-                    <div class="row">
-                        <div class="col-md-12">No contents yet.</div>
-                    </div>
-                @endforelse
+                @endforeach
             </div>
-            <div id="content-preview" class="col-md-8">
-                <div class="row">
-                    <div class="col-md-1">
-                        <a href="#" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
-                    </div>
-                    <div class="col-md-9">
-                        <p>
-                            Created <b>two days ago</b> by <a href="#">you</a>, in <a href="#">Sample category</a>. Last edited <b>yesterday</b> by <a href="#">John Doe</a>.
-                        </p>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="pull-right">
-                            <a href="" class="text-danger">Delete</a>
+            <div id="content-preview-container" class="col-md-8">
+                @if ($preview)
+                    <div class="row">
+                        <div class="col-md-1">
+                            <a href="{{ route('i.contents.edit', ['contents' => $preview->slug]) }}" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </div>
+                        <div class="col-md-9">
+                            <p>
+                                Created <b>{{ $preview->created_at->diffForHumans() }}</b>
+                                by <a href="#">{{ $preview->author->email }}</a>@if ($preview->category)
+                                , in <a href="#">{{ $preview->category }}</a>@endif.
+                                Last edited <b>{{ $preview->updated_at->diffForHumans() }}</b> by <a href="#">{{ $preview->lastEditor->email }}</a>.
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="pull-right">
+                                <a href="" class="text-danger">Delete</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-9 col-md-offset-1">
-                        <a href="" class="label label-default">dummy</a> <a href="" class="label label-default">pulp</a>
+                    <div class="row">
+                        <div class="col-md-9 col-md-offset-1">
+                            <a href="" class="label label-default">dummy</a> <a href="" class="label label-default">pulp</a>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <hr>
-                </div>
-                <h1>Nabend.</h1>
-                <p>
-                    Ich bin ein kleiner Beispiel-Post.
-                </p>
+                    <div class="row">
+                        <hr>
+                    </div>
+                    <div id="content-preview-body">{!! $preview->text !!}</div>
+                @endif
             </div>
         </div>
     </div>
