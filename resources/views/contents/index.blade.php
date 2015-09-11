@@ -35,7 +35,7 @@
                         <div class="col-md-9">
                             <p>
                                 Created <b>{{ $preview->created_at->diffForHumans() }}</b>
-                                by <a href="#">{{ $preview->author->email }}</a>@if ($preview->category), in <a href="#">{{ $preview->category }}</a>@endif.
+                                by <a href="#">{{ $preview->author->email }}</a>@if ($preview->category), in <a href="#">{{ $preview->category->name }}</a>@endif.
                                 @if ($preview->lastEditor)
                                     Last edited <b>{{ $preview->updated_at->diffForHumans() }}</b> by <a href="#">{{ $preview->lastEditor->email }}</a>.
                                 @endif
