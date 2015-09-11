@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('TypesSeeder');
 		$this->call('AuthorsSeeder');
 		$this->call('CategoryColorsSeeder');
+		$this->call('TagColorsSeeder');
 	}
 
 }
