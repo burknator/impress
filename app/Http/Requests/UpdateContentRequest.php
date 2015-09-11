@@ -12,14 +12,7 @@ class UpdateContentRequest extends Request {
 	 */
 	public function authorize()
 	{
-		$authorsContents = Auth::user()->contents()->get()->toArray();
-
-		foreach ($authorsContents as $content)
-		{
-			if ($content['id'] == $this->get('id')) return true;
-		}
-
-		return false;
+		return true;
 	}
 
 	/**
