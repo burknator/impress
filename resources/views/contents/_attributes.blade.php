@@ -1,15 +1,3 @@
-@section('foot-scripts')
-    <script src="/js/markdown-it.js"></script>
-    <script src="/js/codemirror.js"></script>
-    <script src="/js/mode/markdown.js"></script>
-    @parent
-@stop
-
-@section('head-styles')
-    @parent
-    <link rel="stylesheet" href="/css/codemirror.css">
-@stop
-
 {!! Form::hidden('id') !!}
 <div class="form-group">
     <label for="title">Title</label>
@@ -22,13 +10,9 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <label for="text">Body</label>
         {!! Form::textarea('text', null, ['class' => 'form-control', 'id' => 'content-input']) !!}
-    </div>
-    <div class="col-md-6">
-        <label for="preview">Preview</label>
-        <div id="content-preview"></div>
     </div>
 </div>
 
