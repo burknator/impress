@@ -1,27 +1,6 @@
 {
   "private": true,
   "devDependencies": {
-    "gulp": "^3.8.8",
-    "jspm": "^0.15.6",
-    "laravel-elixir": "*"
-  },
-  "jspm": {
-    "directories": {
-      "baseURL": "public"
-    },
-    "configFile": "public/jspm-config.js",
-    "dependencies": {
-      "bootstrap": "npm:bootstrap@3.3.4",
-      "codemirror": "npm:codemirror@^5.2.0",
-      "jquery": "github:components/jquery@^2.1.4",
-      "markdown-it": "npm:markdown-it@^4.2.1",
-      "react": "npm:react@^0.13.3",
-      "systemjs/plugin-css": "github:systemjs/plugin-css@^0.1.10"
-    },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.1.13",
-      "babel-runtime": "npm:babel-runtime@^5.1.13",
-      "core-js": "npm:core-js@^0.9.4"
-    }
+    "laravel-elixir": "^3.2.8"
   }
 }
