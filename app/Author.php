@@ -36,17 +36,6 @@ class Author extends Model implements AuthenticatableContract, AuthorizableContr
      */
     protected $fillable = ['email', 'password'];
 
-    protected static $rules = [
-        'email'    => 'required|email|unique:authors,email',
-        'password' => 'required|confirmed',
-    ];
-
-    protected static $updateRules = [
-        'id'       => 'required|exists:authors,id',
-        'email'    => 'required|email|unique:authors,email,#id#',
-        'password' => 'confirmed',
-    ];
-
     public function contents()
     {
         return $this->hasMany(Content::class);

@@ -21,7 +21,11 @@ class StoreCategoryRequest extends Request {
 	 */
 	public function rules()
 	{
-		return Category::getRules();
+		return [
+	        'name'     => 'required|unique:categories,name',
+	        'slug'     => 'required|unique:categories,slug|alpha_dash',
+	        'color_id' => 'required|exists:category_colors,id'
+	    ];
 	}
 
 }

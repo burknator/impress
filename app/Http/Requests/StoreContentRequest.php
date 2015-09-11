@@ -22,7 +22,12 @@ class StoreContentRequest extends Request {
 	 */
 	public function rules()
 	{
-		return Content::getRules();
+		return [
+	        'title'       => 'required|unique:contents,title',
+	        'slug'        => 'required|alpha_dash|unique:contents,slug',
+	        'type_id'     => 'required|exists:types,id',
+	        'category_id' => 'exists:categories,id',
+	    ];
 	}
 
 }

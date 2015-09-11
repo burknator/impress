@@ -21,7 +21,11 @@ class UpdateCategoryRequest extends Request {
 	 */
 	public function rules()
 	{
-		return Category::getUpdateRules($this->get('id'));
+		return [
+	        'id'       => 'required|exists:categories,id',
+	        'name'     => 'required|unique:categories,name,' . $this->get('id'),
+	        'slug'     => 'required|unique:categories,slug,' . $this->get('id') . '|alpha_dash',
+	        'color_id' => 'required|exists:category_colors,id'
+	    ];
 	}
-
 }

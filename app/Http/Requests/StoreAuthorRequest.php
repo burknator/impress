@@ -21,7 +21,10 @@ class StoreAuthorRequest extends Request {
 	 */
 	public function rules()
 	{
-		return Author::getRules();
+		return [
+	        'email'    => 'required|email|unique:authors,email',
+	        'password' => 'required|confirmed',
+	    ];
 	}
 
 }

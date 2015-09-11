@@ -21,7 +21,11 @@ class UpdateAuthorRequest extends Request {
 	 */
 	public function rules()
 	{
-		return Author::getUpdateRules($this->get('id'));
+		return [
+        'id'       => 'required|exists:authors,id',
+        'email'    => 'required|email|unique:authors,email,' . $this->get('id'),
+        'password' => 'confirmed',
+    ];
 	}
 
 }

@@ -23,21 +23,6 @@ class Content extends Model
 
     protected $dates = ['published_at'];
 
-    protected static $rules = [
-        'title'       => 'required|unique:contents,title',
-        'slug'        => 'required|alpha_dash|unique:contents,slug',
-        'type_id'     => 'required|exists:types,id',
-        'category_id' => 'exists:categories,id',
-    ];
-
-    protected static $updateRules = [
-        'id'          => 'required|exists:contents,id',
-        'title'       => 'required|unique:contents,title,#id#',
-        'slug'        => 'required|alpha_dash|unique:contents,slug,#id#',
-        'type_id'     => 'required|exists:types,id',
-        'category_id' => 'exists:categories,id',
-    ];
-
     public function type()
     {
         return $this->belongsTo(Type::class);

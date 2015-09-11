@@ -29,7 +29,13 @@ class UpdateContentRequest extends Request {
 	 */
 	public function rules()
 	{
-		return Content::getUpdateRules($this->get('id'));
+		return [
+	        'id'          => 'required|exists:contents,id',
+	        'title'       => 'required|unique:contents,title,' . $this->get('id'),
+	        'slug'        => 'required|alpha_dash|unique:contents,slug,' . $this->get('id'),
+	        'type_id'     => 'required|exists:types,id',
+	        'category_id' => 'exists:categories,id',
+	    ];
 	}
 
 }
