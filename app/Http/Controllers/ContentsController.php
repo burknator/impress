@@ -17,7 +17,7 @@ class ContentsController extends Controller {
 	{
 		$contents = Content::orderBy('created_at', 'desc')->get();
 
-		$preview = $contents->last();
+		$preview = $contents->first();
 		if ($request->has('preview')) {
 			$previewId  = $request->get('preview');
 			$preview = $contents->filter(function ($content) use ($previewId) {
