@@ -5,8 +5,7 @@ use Impress\Content;
 use Impress\Http\Requests\StoreContentRequest;
 use Impress\Http\Requests\UpdateContentRequest;
 
-use Request;
-use Auth;
+use Illuminate\Http\Request;
 
 class ContentsController extends Controller {
 	/**
@@ -14,17 +13,19 @@ class ContentsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
 		$contents = Content::orderBy('created_at', 'desc')->get();
 
-		if (Request::get('json'))
-		{
-			return response()->json($contents->toArray());
-		} else
-		{
-			return view('contents.index', compact('contents'));
+		$preview = $contents->last();
+		if ($request->has('preview')) {
+			$previewId  = $request->get('preview');
+			$preview = $contents->filter(function ($content) use ($previewId) {
+				return $content->id == $previewId;
+			})->first();
 		}
+
+		return view('contents.index', compact('contents', 'preview'));
 	}
 
 
@@ -48,7 +49,8 @@ class ContentsController extends Controller {
 	{
 		$content = new Content($request->all());
 
-		Auth::user()->contents()->save($content);
+		$content->lastEditor()->associate(auth()->user());
+		auth()->user()->contents()->save($content);
 
 		return redirect()->route('i.contents.edit', ['contents' => $content->slug]);
 	}
@@ -88,6 +90,8 @@ class ContentsController extends Controller {
 	public function update(UpdateContentRequest $request, Content $content)
 	{
 		$content->fill($request->all())->save();
+
+		// The last editor relationship is saved via a model event in AppServiceProvider.
 
 		return redirect()->route('i.contents.edit', [$content->slug]);
 	}

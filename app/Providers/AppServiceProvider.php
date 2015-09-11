@@ -1,7 +1,8 @@
 <?php namespace Impress\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Impress\Model\ModelValidator;
+
+use Impress\Content;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -12,7 +13,10 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+		// To ensure the last editor is set no matter how he or she does it.
+		Content::updating(function (Content $content) {
+			$content->lastEditor()->associate(auth()->user());
+		});
 	}
 
 	/**
