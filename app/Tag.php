@@ -12,4 +12,9 @@ class Tag extends Eloquent
     {
         return $this->belongsTo(TagColor::class);
     }
+
+    public function contents()
+    {
+        return $this->belongsToMany(Content::class);
+    }
 }

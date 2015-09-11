@@ -43,6 +43,11 @@ class Content extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function scopePublished($query)
     {
         return $query->where('published_at', '<=', Carbon::now());
