@@ -49,7 +49,6 @@ class ContentsController extends Controller {
 	{
 		$content = new Content($request->all());
 
-		$content->lastEditor()->associate(auth()->user());
 		auth()->user()->contents()->save($content);
 
 		return redirect()->route('i.contents.edit', ['contents' => $content->slug]);

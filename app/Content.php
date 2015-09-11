@@ -19,7 +19,7 @@ class Content extends Model
 
     protected $fillable = ['title', 'slug', 'text', 'type_id', 'category_id'];
 
-    protected $nullable = ['category_id'];
+    protected $nullable = ['category_id', 'last_editor_id'];
 
     protected $dates = ['published_at'];
 
