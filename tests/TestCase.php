@@ -5,6 +5,15 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
     protected $baseUrl = 'http://localhost';
 
+    protected $faker;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->faker = Faker\Factory::create();
+    }
+
     /**
      * Creates the application.
      *
