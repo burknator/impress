@@ -12,8 +12,8 @@
 
 @foreach($colors as $color)
 	<div class="radio-inline" style="background-color: #{{ $color->hex }}">
-		<label for="color_{{ $color->id }}">
-			{!! Form::radio('color_id', $color->id, ['id' => 'color_' . $color->id]) !!} {{ $color->hex }}
+		<label>
+			{!! Form::radio('color_id', $color->id) !!} {{ $color->hex }}
 		</label>
 	</div>
 @endforeach

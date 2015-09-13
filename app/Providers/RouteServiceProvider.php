@@ -5,6 +5,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Impress\Content;
 use Impress\Category;
 use Impress\Author;
+use Impress\Tag;
 
 class RouteServiceProvider extends ServiceProvider {
 
@@ -37,6 +38,10 @@ class RouteServiceProvider extends ServiceProvider {
 
 		$router->bind('authors', function($id) {
 			return Author::where('id', '=', $id)->firstOrFail();
+		});
+
+		$router->bind('tags', function($slug) {
+			return Tag::where('slug', '=', $slug)->firstOrFail();
 		});
 	}
 

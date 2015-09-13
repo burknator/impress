@@ -8,6 +8,7 @@ Route::group(['prefix' => 'i', 'middleware' => 'auth'], function()
     Route::resource('contents', 'ContentsController');
     Route::resource('authors', 'AuthorsController');
     Route::resource('categories', 'CategoryController');
+    Route::resource('tags', 'TagsController');
 });
 
 // Login, logout and password reset routes

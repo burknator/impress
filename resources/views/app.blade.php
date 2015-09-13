@@ -31,6 +31,7 @@
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ route('i.contents.index') }}">Contents</a></li>
 								<li><a href="{{ route('i.categories.index') }}">Categories</a></li>
+								<li><a href="{{ route('i.tags.index') }}">Tags</a></li>
 								<li><a href="">Media</a></li>
 								<li class="divider"></li>
 								<li><a href="{{ route('i.authors.index') }}">Authors</a></li>
