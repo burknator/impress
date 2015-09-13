@@ -2,9 +2,9 @@
 
 namespace Impress;
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Impress\Model;
 
-class TagColor extends Eloquent
+class TagColor extends Model
 {
     use Flatable;
 

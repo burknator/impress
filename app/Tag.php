@@ -2,9 +2,9 @@
 
 namespace Impress;
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Impress\Model;
 
-class Tag extends Eloquent
+class Tag extends Model
 {
     protected $fillable = ['name', 'slug', 'color_id'];
 
