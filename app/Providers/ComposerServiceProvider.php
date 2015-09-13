@@ -2,11 +2,12 @@
 
 namespace Impress\Providers;
 
+use Impress\Http\Composers\CategoryAttributesComposer;
+use Impress\Http\Composers\ContentAttributesComposer;
+use Impress\Http\Composers\TagAttributesComposer;
+
 use Illuminate\Support\ServiceProvider;
 use View;
-use Impress\Http\Composers\ContentAttributesComposer;
-use Impress\Http\Composers\CategoryAttributesComposer;
-use Impress\Http\Composers\TagAttributesComposer;
 
 class ComposerServiceProvider extends ServiceProvider
 {

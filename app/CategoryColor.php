@@ -2,8 +2,8 @@
 
 namespace Impress;
 
-use Impress\Model;
 use Impress\Category;
+use Impress\Model;
 
 class CategoryColor extends Model
 {

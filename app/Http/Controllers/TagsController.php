@@ -2,11 +2,10 @@
 
 namespace Impress\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use Impress\Http\Requests;
 use Impress\Http\Controllers\Controller;
 use Impress\Tag;
+
+use Illuminate\Http\Request;
 
 class TagsController extends Controller
 {

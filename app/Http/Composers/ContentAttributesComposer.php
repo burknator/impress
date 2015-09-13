@@ -2,9 +2,10 @@
 
 namespace Impress\Http\Composers;
 
-use Illuminate\Contracts\View\View;
 use Impress\Category;
 use Impress\Type;
+
+use Illuminate\Contracts\View\View;
 
 class ContentAttributesComposer
 {

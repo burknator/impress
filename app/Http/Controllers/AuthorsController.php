@@ -2,10 +2,10 @@
 
 namespace Impress\Http\Controllers;
 
+use Impress\Author;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
-use Impress\Author;
 
 class AuthorsController extends Controller
 {

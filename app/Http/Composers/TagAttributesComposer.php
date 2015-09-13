@@ -2,8 +2,9 @@
 
 namespace Impress\Http\Composers;
 
-use Illuminate\Contracts\View\View;
 use Impress\TagColor;
+
+use Illuminate\Contracts\View\View;
 
 class TagAttributesComposer
 {

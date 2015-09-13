@@ -2,8 +2,8 @@
 
 namespace Impress;
 
-use Impress\Model;
 use Impress\Content;
+use Impress\Model;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\Access\Authorizable;

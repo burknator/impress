@@ -1,10 +1,12 @@
-<?php namespace Impress\Http\Controllers;
+<?php
+
+namespace Impress\Http\Controllers;
+
+use Impress\Content;
+use Impress\Type;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
-use Impress\Type;
-use Impress\Content;
 
 class ContentsController extends Controller
 {

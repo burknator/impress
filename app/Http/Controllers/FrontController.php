@@ -3,7 +3,6 @@
 namespace Impress\Http\Controllers;
 
 use Impress\Content;
-use Impress\Http\Requests;
 use Impress\Type;
 
 class FrontController extends Controller

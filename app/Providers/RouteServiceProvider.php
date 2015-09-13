@@ -2,12 +2,13 @@
 
 namespace Impress\Providers;
 
+use Impress\Author;
+use Impress\Category;
+use Impress\Content;
+use Impress\Tag;
+
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Impress\Content;
-use Impress\Category;
-use Impress\Author;
-use Impress\Tag;
 
 class RouteServiceProvider extends ServiceProvider
 {

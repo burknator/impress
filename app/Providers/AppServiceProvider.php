@@ -2,9 +2,9 @@
 
 namespace Impress\Providers;
 
-use Illuminate\Support\ServiceProvider;
-
 use Impress\Content;
+
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

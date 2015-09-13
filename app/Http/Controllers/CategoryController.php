@@ -2,10 +2,10 @@
 
 namespace Impress\Http\Controllers;
 
+use Impress\Category;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
-use Impress\Category;
 
 class CategoryController extends Controller
 {
