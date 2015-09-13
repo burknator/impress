@@ -1,11 +1,10 @@
 <?php namespace Impress\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 use Impress\Type;
 use Impress\Content;
-use Impress\Http\Requests\StoreContentRequest;
-use Impress\Http\Requests\UpdateContentRequest;
-
-use Illuminate\Http\Request;
 
 class ContentsController extends Controller {
 	/**
@@ -43,10 +42,18 @@ class ContentsController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param Request $request
 	 * @return Response
 	 */
-	public function store(StoreContentRequest $request)
+	public function store(Request $request)
 	{
+		$this->validate($request, [
+	        'title'       => 'required|unique:contents,title',
+	        'slug'        => 'required|alpha_dash|unique:contents,slug',
+	        'type_id'     => 'required|exists:types,id',
+	        'category_id' => 'exists:categories,id',
+	    ]);
+
 		$content = new Content($request->all());
 
 		auth()->user()->contents()->save($content);
@@ -82,12 +89,20 @@ class ContentsController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param UpdateContentRequest $request
-	 * @param Content              $content
+	 * @param Request $request
+	 * @param Content $content
 	 * @return Response
 	 */
-	public function update(UpdateContentRequest $request, Content $content)
+	public function update(Request $request, Content $content)
 	{
+		$this->validate($request, [
+	        'id'          => 'required|exists:contents,id',
+	        'title'       => 'required|unique:contents,title,' . $request->get('id'),
+	        'slug'        => 'required|alpha_dash|unique:contents,slug,' . $request->get('id'),
+	        'type_id'     => 'required|exists:types,id',
+	        'category_id' => 'exists:categories,id',
+	    ]);
+
 		$content->fill($request->all())->save();
 
 		// The last editor relationship is saved via a model event in AppServiceProvider.

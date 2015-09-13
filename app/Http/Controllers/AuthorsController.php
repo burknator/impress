@@ -1,8 +1,9 @@
 <?php namespace Impress\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 use Impress\Author;
-use Impress\Http\Requests\StoreAuthorRequest;
-use Impress\Http\Requests\UpdateAuthorRequest;
 
 class AuthorsController extends Controller
 {
@@ -31,14 +32,19 @@ class AuthorsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Impress\Http\Requests\StoreAuthorRequest $request
-     * @param  Author                                   $author
-     * @return \Impress\Http\Controllers\Response
+     * @param Request $request
+     * @param  Author $author
+     * @return Response
      */
-    public function store(StoreAuthorRequest $request, Author $author)
+    public function store(Request $request, Author $author)
     {
+        $this->validate($request, [
+            'email'    => 'required|email|unique:authors,email',
+            'password' => 'required|confirmed',
+        ]);
+
         $author->fill($request->all())->save();
-        
+
         return redirect()->route('i.authors.edit', [$author->id]);
     }
 
@@ -71,13 +77,18 @@ class AuthorsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Impress\Http\Requests\UpdateAuthorRequest $request
-     * @param \Impress\Author                            $author
-     * @return \Impress\Http\Controllers\Response
-     * @internal param int $id
+     * @param Request $request
+     * @param Author  $author
+     * @return Response
      */
-    public function update(UpdateAuthorRequest $request, Author $author)
+    public function update(Request $request, Author $author)
     {
+        $this->validate($request, [
+            'id'       => 'required|exists:authors,id',
+            'email'    => 'required|email|unique:authors,email,' . $request->get('id'),
+            'password' => 'confirmed',
+        ]);
+
         $author->fill($request->all())->save();
 
         return redirect()->route('i.authors.edit', [$author->id]);

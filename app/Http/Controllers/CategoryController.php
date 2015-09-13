@@ -1,10 +1,9 @@
 <?php namespace Impress\Http\Controllers;
 
-use Impress\Http\Requests\StoreCategoryRequest;
-use Impress\Http\Requests\UpdateCategoryRequest;
-use Impress\Category;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-use Request;
+use Impress\Category;
 
 class CategoryController extends Controller {
 
@@ -31,11 +30,17 @@ class CategoryController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  StoreCategoryRequest $request
+	 * @param  Request $request
 	 * @return Response
 	 */
-	public function store(StoreCategoryRequest $request)
+	public function store(Request $request)
 	{
+		$this->validate($request, [
+	        'name'     => 'required|unique:categories,name',
+	        'slug'     => 'required|unique:categories,slug|alpha_dash',
+	        'color_id' => 'required|exists:category_colors,id'
+	    ]);
+
 		$category = Category::create($request->all());
 
 		return redirect()->route('i.categories.edit', ['categories' => $category->slug]);
@@ -65,12 +70,19 @@ class CategoryController extends Controller {
 
 	/**
 	 * Update the specified resource in storage.
-	 * @param  UpdateCategoryRequest $request
-	 * @param  Category              $category
+	 * @param  Request  $request
+	 * @param  Category $category
 	 * @return Response
 	 */
-	public function update(UpdateCategoryRequest $request, Category $category)
+	public function update(Request $request, Category $category)
 	{
+		$this->validate($request, [
+	        'id'       => 'required|exists:categories,id',
+	        'name'     => 'required|unique:categories,name,' . $request->get('id'),
+	        'slug'     => 'required|unique:categories,slug,' . $request->get('id') . '|alpha_dash',
+	        'color_id' => 'required|exists:category_colors,id'
+	    ]);
+
 		// TODO Implement color handling. The user should be able to create new colors here too.
 
 		$category->fill($request->all())->save();
