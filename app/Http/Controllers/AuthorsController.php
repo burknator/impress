@@ -1,4 +1,6 @@
-<?php namespace Impress\Http\Controllers;
+<?php
+
+namespace Impress\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -64,8 +66,8 @@ class AuthorsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \Impress\Author $author
-     * @return \Impress\Http\Controllers\Response
+     * @param Author $author
+     * @return Response
      * @internal param int $id
      */
     public function edit(Author $author)

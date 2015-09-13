@@ -3,7 +3,8 @@
 use Illuminate\Database\Seeder;
 use Impress\Type;
 
-class TypesSeeder extends Seeder {
+class TypesSeeder extends Seeder
+{
     public function run()
     {
         DB::table('types')->delete();

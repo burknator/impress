@@ -1,8 +1,7 @@
 <?php
 
 // Backend routes, you need to be logged in to access these routes.
-Route::group(['prefix' => 'i', 'middleware' => 'auth'], function()
-{
+Route::group(['prefix' => 'i', 'middleware' => 'auth'], function () {
     Route::get('/', ['as' => 'i.home', 'uses' => 'HomeController@index']);
 
     Route::resource('contents', 'ContentsController');
@@ -27,5 +26,5 @@ Route::match(['get', 'head'], '/password/reset', 'Auth\PasswordController@getRes
 Route::post('/password/reset', 'Auth\PasswordController@postReset');
 
 // Frontcontroller routes, this is what the normal visitor sees.
-Route::get('/',           ['as' => 'front.index', 'uses' => 'FrontController@index']);
+Route::get('/', ['as' => 'front.index', 'uses' => 'FrontController@index']);
 Route::get('/{contents}', ['as' => 'front.show',  'uses' => 'FrontController@show']);

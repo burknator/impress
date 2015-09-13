@@ -3,7 +3,8 @@
 use Illuminate\Database\Seeder;
 use Impress\TagColor;
 
-class TagColorsSeeder extends Seeder {
+class TagColorsSeeder extends Seeder
+{
     public function run()
     {
         DB::table('tag_colors')->delete();

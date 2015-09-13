@@ -1,12 +1,14 @@
-<?php namespace Impress\Http\Controllers;
+<?php
+
+namespace Impress\Http\Controllers;
 
 use Impress\Http\Requests;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
 
-	public function index()
-	{
-		return view('home');
-	}
-
+    public function index()
+    {
+        return view('home');
+    }
 }

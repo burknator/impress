@@ -1,4 +1,6 @@
-<?php namespace Impress;
+<?php
+
+namespace Impress;
 
 use Impress\Model;
 use Impress\Category;

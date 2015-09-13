@@ -1,4 +1,6 @@
-<?php namespace Impress;
+<?php
+
+namespace Impress;
 
 trait Flatable
 {

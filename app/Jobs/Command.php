@@ -1,7 +1,8 @@
-<?php namespace Impress\Commands;
+<?php
 
-abstract class Command {
+namespace Impress\Commands;
 
-	//
-
+abstract class Command
+{
+    //
 }

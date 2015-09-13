@@ -3,7 +3,8 @@
 use Illuminate\Database\Seeder;
 use Impress\CategoryColor;
 
-class CategoryColorsSeeder extends Seeder {
+class CategoryColorsSeeder extends Seeder
+{
     public function run()
     {
         DB::table('category_colors')->delete();

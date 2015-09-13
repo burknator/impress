@@ -1,7 +1,8 @@
-<?php namespace Impress\Events;
+<?php
 
-abstract class Event {
+namespace Impress\Events;
 
-	//
-
+abstract class Event
+{
+    //
 }
