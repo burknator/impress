@@ -1,5 +1,7 @@
 <?php
 
+use Impress\Author;
+
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
 
@@ -26,5 +28,13 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
         $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 
         return $app;
+    }
+
+    /**
+     * Login as a fake Author.
+     */
+    public function login()
+    {
+        return $this->actingAs(factory(Author::class)->create());
     }
 }

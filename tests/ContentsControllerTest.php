@@ -1,7 +1,5 @@
 <?php
 
-use Impress\Author;
-
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ContentsControllerTest extends TestCase
@@ -12,7 +10,7 @@ class ContentsControllerTest extends TestCase
     {
         $slug = $this->faker->word;
 
-        $this->actingAs(factory(Author::class)->create())
+        $this->login()
              ->visit(route('i.contents.create'))
              ->type($this->faker->word, 'title')
              ->type($slug, 'slug')
