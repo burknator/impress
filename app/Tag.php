@@ -6,6 +6,10 @@ use Impress\Model;
 
 class Tag extends Model
 {
+    use Flatable;
+
+    protected $flatableAttribute = 'name';
+
     protected $fillable = ['name', 'slug', 'color_id'];
 
     public function color()

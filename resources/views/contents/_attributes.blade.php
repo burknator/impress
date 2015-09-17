@@ -27,5 +27,15 @@
 </div>
 
 <div class="form-group">
+    <label for="tags">Tags</label>
+
+    @exists ($content)
+        {!! Form::select('tags[]', $tags, $content->tags()->lists('id')->all(), ['class' => 'form-control', 'multiple' => true]) !!}
+    @else
+        {!! Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple' => true]) !!}
+    @endexists
+</div>
+
+<div class="form-group">
     <button type="submit" class="btn btn-primary">Submit</button>
 </div>
