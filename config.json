@@ -1,0 +1,87 @@
+/*
+ |--------------------------------------------------------------------------
+ | Impress configuration
+ |--------------------------------------------------------------------------
+ |
+ | This file contains all settings which can also be accessed and configured
+ | from inside the app. You may also overwrite any other settings from
+ | the Laravel framework and it's packages (found on config/*.php
+ | files). So be careful what you type inhere, it could break
+ | your website!
+ |
+ | Make sure to "flatten" the dimensions of the settings when overwriting
+ | them. So if you overwrite a setting from config/mail.php, for
+ | example this one:
+ |
+ | [
+ |    'from' => [
+ |        'address' => null,
+ |        'name' => null
+ |    ]
+ | ]
+ |
+ | You'd write it in here like this (since this is JSON, you must use
+ | double quotes):
+ |
+ | "mail.from.address": "some@email.com",
+ | "mail.from.name": "Peter Smith",
+ |
+ | Comments are straight up stolen from Laravel :)
+ |
+ */
+
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Application URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL is used by the console to properly generate URLs when using
+    | the Artisan command line tool. You should set this to the root of
+    | your application so that it is used when running Artisan tasks.
+    |
+    */
+
+    "app.url": "http://localhost",
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Timezone
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the default timezone for your application, which
+    | will be used by the PHP date and date-time functions. We have gone
+    | ahead and set this to a sensible default for you out of the box.
+    |
+    */
+
+    "app.timezone": "UTC",
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Locale Configuration
+    |--------------------------------------------------------------------------
+    |
+    | The application locale determines the default locale that will be used
+    | by the translation service provider. You are free to set this value
+    | to any of the locales which will be supported by the application.
+    |
+    */
+
+    "app.locale": "en",
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Fallback Locale
+    |--------------------------------------------------------------------------
+    |
+    | The fallback locale determines the locale to use when the current one
+    | is not available. You may change the value to correspond to any of
+    | the language folders that are provided through your application.
+    |
+    */
+
+    "app.fallback_locale": "en"
+}
+
+// In case you wondered about comments in JSON: They're removed in ConfigServiceProvider.
