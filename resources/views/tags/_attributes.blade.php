@@ -33,6 +33,9 @@
 <div class="row">
     <div class="col-md-12">
         <div class="pull-right">
+            @if (isset($cancelButton) && $cancelButton)
+                <a href="{{ route('i.tags.index') }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
+            @endif
             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Save</button>
         </div>
     </div>

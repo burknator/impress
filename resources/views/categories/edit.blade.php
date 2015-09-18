@@ -3,5 +3,5 @@
 @include('errors')
 
 {!! Form::model($category, ['method' => 'put', 'route' => ['i.categories.update', $category->slug], 'class' => 'form-horizontal']) !!}
-    @include('categories._attributes')
+    @include('categories._attributes', ['cancelButton' => true])
 {!! Form::close() !!}
