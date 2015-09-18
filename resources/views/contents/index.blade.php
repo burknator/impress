@@ -40,15 +40,15 @@
                             @endif
                         </p>
                     </div>
-                    <div class="col-md-2">
-                        <div class="pull-right">
-                            <a href="" class="text-danger">Delete</a>
-                        </div>
+                    <div class="col-md-2 text-right">
+                        <a href="" class="text-danger">Delete</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-9 col-md-offset-1">
-                        <a href="" class="label label-default">dummy</a> <a href="" class="label label-default">pulp</a>
+                        @foreach($preview->tags as $tag)
+                            <a href="#" class="label label-default">{{ $tag->name }}</a>
+                        @endforeach
                     </div>
                 </div>
                 <div class="row">
