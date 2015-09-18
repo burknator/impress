@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('categories.index');
     }
 
     /**
@@ -68,7 +68,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('categories.edit', compact('category'));
+        $categories = Category::all();
+
+        return view('categories.index', compact('category', 'categories'));
     }
 
     /**

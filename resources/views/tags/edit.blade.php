@@ -1,11 +1,7 @@
-@extends('app')
+<h4>Edit tag</h4>
 
-@section('content')
-    <div class="container">
-        @include('errors')
+@include('errors')
 
-        {!! Form::model($tag, ['method' => 'put', 'route' => ['i.tags.update', $tag->slug]]) !!}
-            @include('tags._attributes')
-        {!! Form::close() !!}
-    </div>
-@stop
+{!! Form::model($tag, ['method' => 'put', 'route' => ['i.tags.update', $tag->slug], 'class' => 'form-horizontal']) !!}
+    @include('tags._attributes')
+{!! Form::close() !!}

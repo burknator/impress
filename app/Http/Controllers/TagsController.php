@@ -28,7 +28,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-        return view('tags.create');
+        return view('tags.index');
     }
 
     /**
@@ -69,19 +69,23 @@ class TagsController extends Controller
      */
     public function edit(Tag $tag)
     {
-        return view('tags.edit', compact('tag'));
+        $tags = Tag::all();
+
+        return view('tags.index', compact('tag', 'tags'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  Request  $request
-     * @param  int  $id
+     * @param  Tag      $tag
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $tag->fill($request->all())->save();
+
+        return redirect()->route('i.tags.edit', ['tags' => $tag->slug]);
     }
 
     /**

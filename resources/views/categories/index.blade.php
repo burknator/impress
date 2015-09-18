@@ -1,30 +1,41 @@
 @extends('app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-right">
-                <a href="{!! route('i.categories.create') !!}" class="btn btn-primary">Create new category</a>
-            </div>
+    <div class="row">
+        <div class="col-md-6">
+            @exists ($category)
+                @include ('categories.edit')
+            @else
+                @include ('categories.create')
+            @endif
         </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-12">
-                @if($categories->isEmpty())
-                    <div class="content-placeholder">
-                        <h2>No categories yet</h2>
-                        <p>
-                            You didn't create any categories yet, <a href="{{ route('i.categories.create') }}">add one</a>.
-                        </p>
-                    </div>
-                @else
-                    <ul>
+        <div class="col-md-6">
+            @if($categories->isEmpty())
+                <div class="content-placeholder">
+                    <h4>No categories yet</h4>
+                    <p>
+                        You didn't create any categories yet, <a href="{{ route('i.categories.create') }}">add one</a>.
+                    </p>
+                </div>
+            @else
+                <h4>Categories</h4>
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Slug</th>
+                        <th>Contents</th>
+                        <th></th>
+                    </tr>
                     @foreach($categories as $category)
-                        <li><a href="{!! route('i.categories.edit', ['category' => $category->slug]) !!}">{{ $category->name }}</a></li>
+                        <tr>
+                            <td>{{ $category->name }}</td>
+                            <td>{{ $category->slug }}</td>
+                            <td>{{ $category->contents()->count() }}</td>
+                            <td><a href="{!! route('i.categories.edit', ['category' => $category->slug]) !!}">Edit</a></td>
+                        </tr>
                     @endforeach
-                    </ul>
-                @endif
-            </div>
+                </table>
+            @endif
         </div>
     </div>
 @stop

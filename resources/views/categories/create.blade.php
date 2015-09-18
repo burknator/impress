@@ -1,11 +1,7 @@
-@extends('app')
+<h4>Create new category</h4>
 
-@section('content')
-    <div class="container">
-        @include('errors')
+@include('errors')
 
-        {!! Form::open(['method' => 'post', 'route' => 'i.categories.store']) !!}
-            @include('categories._attributes')
-        {!! Form::close() !!}
-    </div>
-@stop
+{!! Form::open(['method' => 'post', 'route' => 'i.categories.store', 'class' => 'form-horizontal']) !!}
+    @include('categories._attributes')
+{!! Form::close() !!}

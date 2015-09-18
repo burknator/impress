@@ -3,27 +3,31 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-right">
-                <a href="{!! route('i.tags.create') !!}" class="btn btn-primary">Create new tag</a>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-12">
-                @if($tags->isEmpty())
-                    <div class="content-placeholder">
-                        <h2>No tags yet</h2>
-                        <p>
-                            You didn't create any tags yet, <a href="{{ route('i.tags.create') }}">add one</a>.
-                        </p>
-                    </div>
+            <div class="col-md-6">
+                @exists ($tag)
+                    @include('tags.edit')
                 @else
-                    <ul>
-                    @foreach($tags as $tag)
-                        <li><a href="{!! route('i.tags.edit', ['tags' => $tag->slug]) !!}">{{ $tag->name }}</a></li>
-                    @endforeach
-                    </ul>
+                    @include('tags.create')
                 @endif
+            </div>
+            <div class="col-md-6">
+                <h4>Tags</h4>
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Slug</th>
+                        <th>Usage</th>
+                        <th></th>
+                    </tr>
+                    @foreach($tags as $tag)
+                        <tr>
+                            <td>{{ $tag->name }}</td>
+                            <td>{{ $tag->slug }}</td>
+                            <td>{{ $tag->contents()->count() }}</td>
+                            <td><a href="{{ route('i.tags.edit', ['tags' => $tag->slug]) }}"><span class="glyphicon glyphicon-pencil"></span> Edit</a></td>
+                        </tr>
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>

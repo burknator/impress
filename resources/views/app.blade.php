@@ -46,7 +46,9 @@
 		</div>
 	</nav>
 
-	@yield('content')
+	<div class="container">
+		@yield('content')
+	</div>
 
 	@section('foot-scripts')
         <script src="/js/app.js"></script>
