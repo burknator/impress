@@ -13,6 +13,11 @@ With Laravel. This is my first "serious" Laravel project. I'm a little afraid th
 ## Progression
 Will be slow. As I said, I'm currently studying full-time and have a part-time job. These two certainly have top priority, which means there may be times/weeks/months when this baby won't get any love from me. It's no big project by any means, but this is kind of the reason I want to make it as perfect as I can.
 
+## Powered by
+
+ - Laravel
+ - https://bitbucket.org/pellepim/jstimezonedetect
+
 ---
 
 ANY kind of contributions are welcome. Drop me an e-mail at hubatt@gmail.com, fork and create a pull-request, add me on [gplus](http://google.com/+PatrickBurke14)

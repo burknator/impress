@@ -9,6 +9,7 @@ elixir(function (mix) {
         .scripts([
             'jquery.js',
             'bootstrap.js',
+            'jstz-1.0.4.min.js',
             'main.js'
         ], 'public/js/app.js');
 });

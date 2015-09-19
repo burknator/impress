@@ -87,12 +87,21 @@
 
             <div class="col-md-5">
                 <select name="timezone" id="timezone" class="form-control">
-                    <option value="0">UTC</option>
-                    <option value="+1">UTC+1 (Berlin, Amsterdam, ....)</option>
+                    @foreach($timezoneList as $offset => $cities)
+                        <optgroup label="{{ $offset }}">
+                            @foreach($cities as $id => $city)
+                                <option value="{{ $id }}">{{ $city }}</option>
+                            @endforeach
+                        </optgroup>
+                    @endforeach
                 </select>
                 <p class="help-block">
-                    <a href="#"><span class="glyphicon glyphicon-globe"></span> Detect via current location</a>
+                    This was automatically detected during the installation.
                 </p>
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" class="btn"><span class="glyphicon glyphicon-refresh"></span> Re-detect now</a>
             </div>
         </div>
 
