@@ -4,6 +4,9 @@
 Route::group(['prefix' => 'i', 'middleware' => 'auth'], function () {
     Route::get('/', ['as' => 'i.home', 'uses' => 'HomeController@index']);
 
+    Route::get('settings', ['as' => 'i.settings.index', 'uses' => 'SettingsController@index']);
+    Route::put('settings', ['as' => 'i.settings.update', 'uses' => 'SettingsController@update']);
+
     Route::resource('contents', 'ContentsController');
     Route::resource('authors', 'AuthorsController');
     Route::resource('categories', 'CategoryController');

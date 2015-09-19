@@ -25,7 +25,7 @@
 
 				@unless(Auth::guest())
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
+						<li><a href="{{ route('i.settings.index') }}"><span class="glyphicon glyphicon-cog"></span></a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></a>
 							<ul class="dropdown-menu" role="menu">
@@ -35,7 +35,7 @@
 								<li><a href="">Media</a></li>
 								<li class="divider"></li>
 								<li><a href="{{ route('i.authors.index') }}">Authors</a></li>
-								<li><a href="">Settings</a></li>
+								<li><a href="{{ route('i.settings.index') }}">Settings</a></li>
 							</ul>
 						</li>
 						<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->email }}</a></li>
