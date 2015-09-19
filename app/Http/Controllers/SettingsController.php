@@ -59,15 +59,20 @@ class SettingsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param  Request  $request
-     * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+            'timezone' => 'required|timezone'
+        ]);
+
+        config([
+            'app.timezone' => $request->get('timezone')
+        ]);
+
+        // TODO Save into config.json
     }
 
 }
