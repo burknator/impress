@@ -96,7 +96,7 @@
                     @endforeach
                 </select>
                 <p class="help-block">
-                    This was automatically detected during the installation.
+                    This is used for... This was automatically detected during the installation.
                 </p>
             </div>
 
@@ -110,6 +110,9 @@
 
             <div class="col-md-5">
                 <input type="text" name="date-format" id="date-format" class="form-control">
+                <p class="help-block">
+                    This is used for...
+                </p>
             </div>
         </div>
 
@@ -118,6 +121,9 @@
 
             <div class="col-md-5">
                 <input type="text" name="time-format" id="time-format" class="form-control">
+                <p class="help-block">
+                    This is used for...
+                </p>
             </div>
         </div>
 
