@@ -23,6 +23,12 @@ class ViewServiceProvider extends ServiceProvider
         Blade::directive('endexists', function ($expression) {
             return "<?php endif; ?>";
         });
+
+        Blade::directive('icon', function($expression) {
+            $expression = trim($expression, "'()");
+
+            return "<span class=\"glyphicon glyphicon-{$expression}\"></span>";
+        });
     }
 
     /**
