@@ -53,7 +53,7 @@
 
 	@section('foot-scripts')
 		<script src="/jspm_packages/system.js"></script>
-		<script src="/config.js"></script>
+		<script src="/jspm.js"></script>
 		<script>
 			System.import('js/main.js');
 		</script>

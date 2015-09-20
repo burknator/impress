@@ -8,6 +8,7 @@
     "directories": {
       "baseURL": "public"
     },
+    "configFile": "public/jspm.js",
     "dependencies": {
       "bootstrap": "github:twbs/bootstrap@^3.3.5",
       "jstimezonedetect": "npm:jstimezonedetect@^1.0.5",
