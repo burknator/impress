@@ -12,7 +12,7 @@ new Vue({
     },
 
     methods: {
-        test: function() {
+        redetectTimezone: function() {
             this.timezone = jstz.determine().name()
         }
     }

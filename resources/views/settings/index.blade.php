@@ -109,7 +109,7 @@
             </div>
 
             <div class="col-md-3">
-                <button type="button" class="btn btn-default" v-on="click: test">@icon('refresh') Re-detect now</button>
+                <button type="button" class="btn btn-default" v-on="click: redetectTimezone">@icon('refresh') Re-detect now</button>
             </div>
         </div>
 
