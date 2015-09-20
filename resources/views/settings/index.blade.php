@@ -35,6 +35,14 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label for="url-format" class="col-md-3 control-label">URL Format</label>
+
+            <div class="col-md-5">
+                <input type="text" name="url-format" id="url-format" class="form-control">
+            </div>
+        </div>
+
         <h4>Writing</h4>
         <hr>
 
