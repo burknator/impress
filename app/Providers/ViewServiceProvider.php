@@ -29,6 +29,23 @@ class ViewServiceProvider extends ServiceProvider
 
             return "<span class=\"glyphicon glyphicon-{$expression}\"></span>";
         });
+
+        /**
+         * Creates an HTML5 <time> element with datetime attribute and Bootstrap tooltip with a detailed version of that
+         * same timestamp.
+         */
+        Blade::directive('time', function($expression) {
+            $expression = trim($expression, "'()");
+            list($carbon, $method) = array_map(function($el) { return trim($el, " '\""); }, explode(',', $expression));
+
+            $text = $carbon . '->' . $method . '()';
+            $timestamp = $carbon . '->toRfc3339String()';
+
+            return '<time datetime="<?= ' . $timestamp . ' ?>"'
+                   . ' data-toggle="tooltip"'
+                   . ' title="<?= ' . $carbon . ' ?>"'
+                   . '><?= ' . $text . ' ?></time>';
+        });
     }
 
     /**
