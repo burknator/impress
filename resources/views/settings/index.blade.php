@@ -109,7 +109,7 @@
             </div>
 
             <div class="col-md-3">
-                <button type="button" class="btn btn-default" v-on="click: test"><span class="glyphicon glyphicon-refresh"></span> Re-detect now</button>
+                <button type="button" class="btn btn-default" v-on="click: test">@icon('refresh') Re-detect now</button>
             </div>
         </div>
 
@@ -161,7 +161,7 @@
         <div class="form-group">
             <div class="col-md-12">
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Save</button>
+                    <button type="submit" class="btn btn-success">@icon('ok') Save</button>
                 </div>
             </div>
         </div>
