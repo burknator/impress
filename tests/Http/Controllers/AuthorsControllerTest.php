@@ -2,20 +2,21 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class CategoriesControllerTest extends TestCase
+class AuthorsControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
     public function testStoreNewAuthor()
     {
+        $email = $this->faker->email;
         $password = $this->faker->password;
 
         $this->login()
              ->visit(route('i.authors.create'))
-             ->type($this->faker->email, 'email')
+             ->type($email, 'email')
              ->type($password, 'password')
              ->type($password, 'password_confirmation')
              ->press('Save')
-             ->seePageIs(route('i.authors.edit', ['authors' => $slug]));
+             ->see($email);
     }
 }

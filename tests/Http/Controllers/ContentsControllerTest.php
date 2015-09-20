@@ -10,12 +10,14 @@ class ContentsControllerTest extends TestCase
     {
         $slug = $this->faker->word;
 
+        $tag = factory(Impress\Tag::class)->create();
+
         $this->login()
              ->visit(route('i.contents.create'))
              ->type($this->faker->word, 'title')
              ->type($slug, 'slug')
              ->type($this->faker->paragraph, 'text')
-             ->press('Submit')
+             ->press('Save')
              ->seePageIs(route('i.contents.edit', ['contents' => $slug]));
     }
 }
