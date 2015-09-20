@@ -44,7 +44,7 @@
                 <label for="tags">Tags</label>
 
                 @exists ($content)
-                    {!! Form::select('tags[]', $tags, $content->tags()->lists('id')->all(), ['class' => 'form-control', 'multiple' => true]) !!}
+                    {!! Form::select('tags[]', $tags, $content->tags()->lists('id')->all(), ['class' => 'form-control']) !!}
                 @else
                     {!! Form::select('tags[]', $tags, null, ['class' => 'form-control']) !!}
                 @endexists
