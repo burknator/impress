@@ -1,5 +1,13 @@
 @extends('app')
 
+@section('foot-scripts')
+    <script>
+        window.$data = {!! collect($userConfig)->toJson() !!};
+    </script>
+
+    @parent
+@stop
+
 @section('content')
     {!! Form::open(['method' => 'put', 'route' => 'i.settings.update', 'class' => 'form-horizontal', 'id' => 'i-settings-edit']) !!}
         <div class="form-group">
@@ -47,18 +55,23 @@
         <hr>
 
         <div class="form-group">
-            <label for="autosave-enable" class="col-md-3 control-label">Enable Autosave</label>
+            <label for="autosave-enabled" class="col-md-3 control-label">Enable Autosave</label>
             <div class="col-md-5">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="autosave-enable" id="autosave-enable" v-model="autosave.enabled">
+                        <input type="checkbox"
+                               name="autosave-enabled"
+                               id="autosave-enabled"
+                               value="1"
+                               v-model="app.autosave.enabled"
+                               @checked($userConfig['app']['autosave']['enabled'])>
                         Save the content automatically while writing
                     </label>
                 </div>
             </div>
         </div>
 
-        <div class="form-group" v-if="autosave.enabled">
+        <div class="form-group" v-if="app.autosave.enabled">
             <label for="autosave-interval" class="col-md-1 col-md-offset-3 control-label">Every</label>
 
             <div class="col-md-1">
@@ -94,11 +107,11 @@
             <label for="timezone" class="col-md-3 control-label">Timezone</label>
 
             <div class="col-md-5">
-                <select name="timezone" id="timezone" class="form-control" v-model="timezone">
+                <select name="timezone" id="timezone" class="form-control" v-model="app.timezone">
                     @foreach($timezoneList as $offset => $cities)
                         <optgroup label="{{ $offset }}">
                             @foreach($cities as $id => $city)
-                                <option value="{{ $id }}" @selected(config('app.timezone') == $id)>{{ $city }}</option>
+                                <option value="{{ $id }}" @selected($userConfig['app']['timezone'] == $id)>{{ $city }}</option>
                             @endforeach
                         </optgroup>
                     @endforeach

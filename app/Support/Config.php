@@ -4,6 +4,8 @@ namespace Impress\Support;
 
 use Impress\Exceptions\Config\NotReadableException;
 
+use Illuminate\Support\Arr;
+
 class Config
 {
     // Thanks @ http://php.net/manual/de/function.json-decode.php#112735
@@ -54,7 +56,7 @@ class Config
 
     /**
      * Parses user configuration file into an PHP array and returns it. Returns
-     * empty array when there is now config file.
+     * empty array when there is no config file.
      *
      * @return array
      *
@@ -84,6 +86,27 @@ class Config
     }
 
     /**
+     * Parses user configuration file into a nested associative array (in contrast to the dotted, flat version load()
+     * creates)  Returns empty array when there is no config file.
+     *
+     * @return array
+     *
+     * @throws \Impress\Exceptions\Config\NotReadableException
+     */
+    public function loadNested()
+    {
+        $config = [];
+        foreach ($this->load() as $setting => $value) {
+            // Arr::set() will interpret the dot-notation in the key and create an
+            // associative array where each dot represents a new depth level.
+            // This loop is the opposite action of Laravel's array_dot.
+            Arr::set($config, $setting, $value);
+        }
+
+        return $config;
+    }
+
+    /**
      * Replaces passed configuration values in the user's configuration file and saves it.
      *
      * @param  array    $config
@@ -106,7 +129,7 @@ class Config
             if (is_bool($config[$setting])) {
                 $replacement = '$1' . ($config[$setting] ? 'true' : 'false') . '$3';
             } else {
-                $replacement = '$1"' . $config[$setting] . '"$3';
+                $replacement = '$1"' . e($config[$setting]) . '"$3';
             }
 
             $fileContent = preg_replace($pattern, $replacement, $fileContent);

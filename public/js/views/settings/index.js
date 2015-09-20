@@ -1,19 +1,17 @@
-import Vue from 'vue';
-import {jstz} from 'jstimezonedetect';
+import _ from 'lodash'
+import {jstz} from 'jstimezonedetect'
+import Vue from 'vue'
 
 new Vue({
     el: '#i-settings-edit',
 
-    data: {
-        timezone: '',
-        autosave: {
-            enabled: false
-        }
-    },
+    data: _.assign({
+        // Custom models go here
+    }, _.cloneDeep(window.$data)),
 
     methods: {
         redetectTimezone: function() {
-            this.timezone = jstz.determine().name()
+            this['app-timezone'] = jstz.determine().name()
         }
     }
 });

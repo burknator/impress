@@ -32,6 +32,17 @@
 
 {
     /*
+     |--------------------------------------------------------------------------
+     | Auto saving
+     |--------------------------------------------------------------------------
+     | 
+     | When set to true, Impress will automatically save a draft of the post
+     | or page you're working on in adjustable intervals. This interval
+     | can be controlled via app.autosave.interval.
+     */
+    "app.autosave.enabled": false,
+
+    /*
     |--------------------------------------------------------------------------
     | Application URL
     |--------------------------------------------------------------------------

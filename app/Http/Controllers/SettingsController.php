@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 class SettingsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a list of timezones, indexed by their offset and identifier and the ciyt as value.
      *
-     * @return Response
+     * @return array
      */
-    public function index()
+    protected function createTimezoneList()
     {
         $timezoneIdentifiers = \DateTimeZone::listIdentifiers();
         $utcTime = new \DateTime('now', new \DateTimeZone('UTC'));
@@ -56,21 +56,42 @@ class SettingsController extends Controller
             $timezoneList[$sign . $offset][$tz['identifier']] = $city;
         }
 
-        return view('settings.index', compact('timezoneList'));
+        return $timezoneList;
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Impress\Support\Config $userConfig
+     * @return Response
+     */
+    public function index(Config $userConfig)
+    {
+        $timezoneList = $this->createTimezoneList();
+        $userConfig   = $userConfig->loadNested();
+
+        return view('settings.index', compact('timezoneList', 'userConfig'));
     }
 
     /**
-     * @param  Request  $request
+     * @param  Request                 $request
+     * @param  \Impress\Support\Config $userConfig
      * @return Response
      */
     public function update(Request $request, Config $userConfig)
     {
+        // Currently there is now automatic mapping between field names
+        // and actual configuration settings as this might introduce
+        // security problems. An attacker could set the value of
+        // a setting in a way it's not intended to be.
+
         $this->validate($request, [
-            'timezone' => 'required|timezone'
+            'timezone'         => 'timezone',
+            'autosave-enabled' => 'boolean'
         ]);
 
         $userConfig->save([
-            'app.timezone' => $request->get('timezone')
+            'app.timezone'         => $request->input('timezone'),
+            'app.autosave.enabled' => (bool) $request->input('autosave-enabled', false)
         ]);
 
         return redirect()->route('i.settings.index');
