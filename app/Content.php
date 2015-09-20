@@ -52,6 +52,13 @@ class Content extends Model
 
     public function scopePublished($query)
     {
-        return $query->where('published_at', '<=', Carbon::now());
+        return $query->where('published_at', '<=', Carbon::now())
+                     ->where('published_at', '<>', '0000-00-00 00:00:00');
+    }
+
+    public function scopeDrafts($query)
+    {
+        return $query->where('published_at', '>', Carbon::now())
+                     ->orWhere('published_at', '=', '0000-00-00 00:00:00');
     }
 }
