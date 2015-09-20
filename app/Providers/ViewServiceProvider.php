@@ -24,7 +24,7 @@ class ViewServiceProvider extends ServiceProvider
             return "<?php endif; ?>";
         });
 
-        Blade::directive('icon', function($expression) {
+        Blade::directive('icon', function ($expression) {
             $expression = trim($expression, "'()");
 
             return "<span class=\"glyphicon glyphicon-{$expression}\"></span>";
@@ -34,7 +34,7 @@ class ViewServiceProvider extends ServiceProvider
          * Creates an HTML5 <time> element with datetime attribute and Bootstrap tooltip with a detailed version of that
          * same timestamp.
          */
-        Blade::directive('time', function($expression) {
+        Blade::directive('time', function ($expression) {
             $expression = trim($expression, "'()");
             list($carbon, $method) = array_map(function($el) { return trim($el, " '\""); }, explode(',', $expression));
 
@@ -45,6 +45,10 @@ class ViewServiceProvider extends ServiceProvider
                    . ' data-toggle="tooltip"'
                    . ' title="<?= ' . $carbon . ' ?>"'
                    . '><?= ' . $text . ' ?></time>';
+        });
+
+        Blade::directive('selected', function ($expression) {
+            return "<?= ($expression ? ' selected ' : '') ?>";
         });
     }
 

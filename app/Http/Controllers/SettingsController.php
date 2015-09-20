@@ -2,10 +2,11 @@
 
 namespace Impress\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use Impress\Http\Requests;
 use Impress\Http\Controllers\Controller;
+use Impress\UserConfig;
+
+use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
@@ -62,17 +63,17 @@ class SettingsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, UserConfig $userConfig)
     {
         $this->validate($request, [
             'timezone' => 'required|timezone'
         ]);
 
-        config([
+        $userConfig->save([
             'app.timezone' => $request->get('timezone')
         ]);
 
-        // TODO Save into config.json
+        return redirect()->route('i.settings.index');
     }
 
 }

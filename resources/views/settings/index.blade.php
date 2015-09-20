@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <form action="{{ route('i.settings.update') }}" class="form-horizontal">
+    {!! Form::open(['method' => 'put', 'route' => 'i.settings.update', 'class' => 'form-horizontal']) !!}
         <div class="form-group">
             <div class="col-md-12">
                 <input type="text" id="search" placeholder="Search... (F)" class="form-control">
@@ -98,7 +98,7 @@
                     @foreach($timezoneList as $offset => $cities)
                         <optgroup label="{{ $offset }}">
                             @foreach($cities as $id => $city)
-                                <option value="{{ $id }}">{{ $city }}</option>
+                                <option value="{{ $id }}" @selected(config('app.timezone') == $id)>{{ $city }}</option>
                             @endforeach
                         </optgroup>
                     @endforeach
@@ -165,5 +165,5 @@
                 </div>
             </div>
         </div>
-    </form>
+    {!! Form::close() !!}
 @stop
