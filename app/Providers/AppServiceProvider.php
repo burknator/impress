@@ -3,7 +3,7 @@
 namespace Impress\Providers;
 
 use Impress\Content;
-use Impress\Support\UserConfig;
+use Impress\Support\Config;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -39,8 +39,8 @@ class AppServiceProvider extends ServiceProvider
             'Impress\Services\Registrar'
         );
 
-        $this->app->singleton('UserConfig', function ($app) {
-            return new UserConfig();
+        $this->app->singleton('userConfig', function ($app) {
+            return new Config();
         });
     }
 }

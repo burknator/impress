@@ -17,7 +17,7 @@ class ConfigServiceProvider extends ServiceProvider
     public function register()
     {
         try {
-            config($this->app['UserConfig']->load());
+            config($this->app['userConfig']->load());
         } catch(NotReadableException $e) {
             // TODO Give feedback
         }

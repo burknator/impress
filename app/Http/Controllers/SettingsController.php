@@ -4,7 +4,7 @@ namespace Impress\Http\Controllers;
 
 use Impress\Http\Requests;
 use Impress\Http\Controllers\Controller;
-use Impress\Support\UserConfig;
+use Impress\Support\Config;
 
 use Illuminate\Http\Request;
 
@@ -63,7 +63,7 @@ class SettingsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request, UserConfig $userConfig)
+    public function update(Request $request, Config $userConfig)
     {
         $this->validate($request, [
             'timezone' => 'required|timezone'

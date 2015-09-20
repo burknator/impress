@@ -1,6 +1,6 @@
 <?php
 
-namespace Impress\Exceptions\UserConfig;
+namespace Impress\Exceptions\Config;
 
 class NotReadableException extends Exception
 {

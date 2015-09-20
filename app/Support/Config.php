@@ -2,9 +2,9 @@
 
 namespace Impress\Support;
 
-use Impress\Exceptions\UserConfig\NotReadableException;
+use Impress\Exceptions\Config\NotReadableException;
 
-class UserConfig
+class Config
 {
     // Thanks @ http://php.net/manual/de/function.json-decode.php#112735
     protected $commentRegExp = "#(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|([\s\t]//.*)|(^//.*)#";
@@ -24,7 +24,7 @@ class UserConfig
      *
      * @return string|bool
      *
-     * @throws \Impress\Exceptions\UserConfig\NotReadableException
+     * @throws \Impress\Exceptions\Config\NotReadableException
      */
     protected function read()
     {
@@ -58,7 +58,7 @@ class UserConfig
      *
      * @return array
      *
-     * @throws \Impress\Exceptions\UserConfig\NotReadableException
+     * @throws \Impress\Exceptions\Config\NotReadableException
      */
     public function load()
     {
