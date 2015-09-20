@@ -16,9 +16,7 @@ class TagsController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
-
-        return view('tags.index', compact('tags'));
+        return view('tags.index')->with('tags', Tag::all());
     }
 
     /**
@@ -28,7 +26,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-        return view('tags.index');
+        return view('tags.index')->with('tags', Tag::all());
     }
 
     /**
