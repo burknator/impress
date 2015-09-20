@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    {!! Form::open(['method' => 'put', 'route' => 'i.settings.update', 'class' => 'form-horizontal']) !!}
+    {!! Form::open(['method' => 'put', 'route' => 'i.settings.update', 'class' => 'form-horizontal', 'id' => 'i-settings-edit']) !!}
         <div class="form-group">
             <div class="col-md-12">
                 <input type="text" id="search" placeholder="Search... (F)" class="form-control">
@@ -51,14 +51,14 @@
             <div class="col-md-5">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="autosave-enable" id="autosave-enable">
+                        <input type="checkbox" name="autosave-enable" id="autosave-enable" v-model="autosave.enabled">
                         Save the content automatically while writing
                     </label>
                 </div>
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" v-if="autosave.enabled">
             <label for="autosave-interval" class="col-md-1 col-md-offset-3 control-label">Every</label>
 
             <div class="col-md-1">
@@ -94,7 +94,7 @@
             <label for="timezone" class="col-md-3 control-label">Timezone</label>
 
             <div class="col-md-5">
-                <select name="timezone" id="timezone" class="form-control">
+                <select name="timezone" id="timezone" class="form-control" v-model="timezone">
                     @foreach($timezoneList as $offset => $cities)
                         <optgroup label="{{ $offset }}">
                             @foreach($cities as $id => $city)
@@ -109,7 +109,7 @@
             </div>
 
             <div class="col-md-3">
-                <a href="#" class="btn"><span class="glyphicon glyphicon-refresh"></span> Re-detect now</a>
+                <button type="button" class="btn btn-default" v-on="click: test"><span class="glyphicon glyphicon-refresh"></span> Re-detect now</button>
             </div>
         </div>
 
