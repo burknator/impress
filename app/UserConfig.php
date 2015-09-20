@@ -6,38 +6,45 @@ use Impress\Exceptions\UserConfig\NotReadableException;
 
 class UserConfig
 {
+    // Thanks @ http://php.net/manual/de/function.json-decode.php#112735
     protected $commentRegExp = "#(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|([\s\t]//.*)|(^//.*)#";
 
+    /**
+     * Returns the fully qualified path to the user configuration file.
+     *
+     * @return string
+     */
     protected function filePath()
     {
         return config('impress.user_config_file');
     }
 
     /**
-     * Read content of user configuration file.
+     * Read content of user configuration file, returns false if there no such file.
      *
-     * @throws NotReadableException
-     * @return string|bool False when there is no user config file.
+     * @return string|bool
+     *
+     * @throws \Impress\Exceptions\UserConfig\NotReadableException
      */
     protected function read()
     {
-        $configFilePath = $this->filePath();
-        if (!file_exists($configFilePath)) {
+        $path = $this->filePath();
+        if (!file_exists($path)) {
             return false;
         }
 
-        $config = file_get_contents($configFilePath);
-        if ($config === false) {
-            throw new NotReadableException('Couldn\'t read file content of user configuration file.');
+        $content = file_get_contents($path);
+        if ($content === false) {
+            throw new NotReadableException('Cannot read user configuration file.');
         }
 
-        return $config;
+        return $content;
     }
 
     /**
      * Write new content to user configuration file.
      *
-     * @param $content
+     * @param  string   $content
      * @return int|bool
      */
     protected function write($content)
@@ -46,21 +53,24 @@ class UserConfig
     }
 
     /**
-     * Parses user configuration file into an PHP array and returns it. Returns empty array when there is now config
-     * file.
+     * Parses user configuration file into an PHP array and returns it. Returns
+     * empty array when there is now config file.
      *
-     * @throws NotReadableException
      * @return array
+     *
+     * @throws \Impress\Exceptions\UserConfig\NotReadableException
      */
     public function load()
     {
         $config = $this->read();
         if ($config === false) {
+            // TODO Maybe let the user know that we couldn't find a user config, as
+            // this is unusual
             return [];
         }
 
-        // Comments are not allowed in JSON and therefore need to be removed before decoding.
-        // Thanks @ http://php.net/manual/de/function.json-decode.php#112735
+        // Comments are not allowed in JSON and therefore need to be removed
+        // before decoding.
         $config = preg_replace($this->commentRegExp, '', $config);
 
         $jsonConfig = json_decode($config, true);
@@ -76,7 +86,7 @@ class UserConfig
     /**
      * Replaces passed configuration values in the user's configuration file and saves it.
      *
-     * @param array $config
+     * @param  array    $config
      * @return int|bool
      */
     public function save($config)
@@ -88,7 +98,10 @@ class UserConfig
                 continue;
             }
 
+            // Should match ony not commented lines of JSON assignments
             $pattern = '~(^\s*"' . preg_quote($setting) . '"\s*:\s*)".*"(.*)~mi';
+
+            // Replace line with new value while keeping any previous whitespace
             $replacement = '$1"' . $config[$setting] . '"$2';
 
             $fileContent = preg_replace($pattern, $replacement, $fileContent);
