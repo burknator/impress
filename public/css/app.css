@@ -6476,6 +6476,9 @@ button.close {
     display: none !important;
   }
 }
+body {
+  padding-bottom: 70px !important;
+}
 body,
 label,
 .checkbox label {

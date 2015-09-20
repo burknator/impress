@@ -3,6 +3,11 @@
 @btn-font-weight: 300;
 @font-family-sans-serif: Helvetica, Arial, sans-serif;
 
+body {
+    // Important because of PhpDebugBar adding a style attribute to body with padding bottom
+    padding-bottom: 70px !important;
+}
+
 body, label, .checkbox label {
 	font-weight: 300;
 }
@@ -10,7 +15,7 @@ body, label, .checkbox label {
 #content-list {
     & > .content-entry {
         padding: @grid-gutter-width/2 0;
-        
+
         &:hover {
             background-color: @list-group-hover-bg;
             cursor: pointer;
