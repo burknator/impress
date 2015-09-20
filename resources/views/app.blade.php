@@ -17,29 +17,30 @@
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="{!! route('i.contents.create') !!}"><span class="glyphicon glyphicon-plus"></span> Compose</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-paperclip"></span> Upload</a></li>
-					<li><a href="{{ route('i.contents.index') }}">Contents</a></li>
+					<li><a href="{!! route('i.contents.create') !!}">@icon('pencil') Compose</a></li>
+					<li><a href="#">@icon('paperclip') Upload</a></li>
 				</ul>
-
 
 				@unless(Auth::guest())
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="{{ route('i.settings.index') }}"><span class="glyphicon glyphicon-cog"></span></a></li>
+						<li><a href="{{ route('i.contents.index') }}">@icon('list') Contents</a></li>
+						<li><a href="{{ route('i.settings.index') }}">@icon('cog') Settings</a></li>
+						<li><a href="#">@icon('user') {{ Auth::user()->email }}</a></li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@icon('option-horizontal')</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ route('i.contents.index') }}">Contents</a></li>
-								<li><a href="{{ route('i.categories.index') }}">Categories</a></li>
-								<li><a href="{{ route('i.tags.index') }}">Tags</a></li>
-								<li><a href="">Media</a></li>
+								<li><a href="{{ route('i.contents.index') }}">@icon('list') Contents</a></li>
+								<li><a href="{{ route('i.categories.index') }}">@icon('folder-open') Categories</a></li>
+								<li><a href="{{ route('i.tags.index') }}">@icon('tags') Tags</a></li>
+								<li><a href="">@icon('picture') Media</a></li>
 								<li class="divider"></li>
-								<li><a href="{{ route('i.authors.index') }}">Authors</a></li>
-								<li><a href="{{ route('i.settings.index') }}">Settings</a></li>
+								<li><a href="{{ route('i.authors.index') }}">@icon('user') Authors</a></li>
+								<li><a href="{{ route('i.settings.index') }}">@icon('cog') Settings</a></li>
+								<li class="divider"></li>
+								<li><a href="{{ route('logout') }}">@icon('off') Logout</a></li>
 							</ul>
 						</li>
-						<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->email }}</a></li>
-						<li><a href="{{ route('logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+						<li><a href="{{ route('logout') }}">@icon('off')</a></li>
 					</ul>
 				@endunless
 			</div>
