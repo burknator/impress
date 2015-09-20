@@ -1,5 +1,3 @@
-+function($) {
-    'use strict';
+import $ from 'bootstrap';
 
-    $('[data-toggle="tooltip"]').tooltip();
-}(jQuery);
+$('[data-toggle="tooltip"]').tooltip();

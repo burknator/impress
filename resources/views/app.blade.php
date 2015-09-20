@@ -52,7 +52,11 @@
 	</div>
 
 	@section('foot-scripts')
-        <script src="/js/app.js"></script>
+		<script src="/jspm_packages/system.js"></script>
+		<script src="/config.js"></script>
+		<script>
+			System.import('js/main.js');
+		</script>
 	@stop
 	@yield('foot-scripts')
 </body>
