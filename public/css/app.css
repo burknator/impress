@@ -6494,5 +6494,9 @@ label,
 #content-list .title {
   font-size: 14pt;
 }
+.placeholder-block {
+  text-align: center;
+  color: #737373;
+}
 
 /*# sourceMappingURL=app.css.map */

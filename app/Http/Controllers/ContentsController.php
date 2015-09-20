@@ -17,17 +17,10 @@ class ContentsController extends Controller
      */
     public function index(Request $request)
     {
-        $contents = Content::orderBy('created_at', 'desc')->get();
+        $drafts    = Content::with('author', 'type')->drafts()->orderBy('updated_at', 'desc')->get();
+        $published = Content::with('author', 'type')->published()->orderBy('published_at', 'desc')->get();
 
-        $preview = $contents->first();
-        if ($request->has('preview')) {
-            $previewId  = $request->get('preview');
-            $preview = $contents->filter(function ($content) use ($previewId) {
-                return $content->id == $previewId;
-            })->first();
-        }
-
-        return view('contents.index', compact('contents', 'preview'));
+        return view('contents.index', compact('drafts', 'published'));
     }
 
 

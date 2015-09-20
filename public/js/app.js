@@ -11527,6 +11527,6 @@ if (typeof jQuery === 'undefined') {
 +function($) {
     'use strict';
 
-
+    $('[data-toggle="tooltip"]').tooltip();
 }(jQuery);
 //# sourceMappingURL=app.js.map
