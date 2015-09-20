@@ -4,7 +4,7 @@ namespace Impress\Http\Controllers;
 
 use Impress\Http\Requests;
 use Impress\Http\Controllers\Controller;
-use Impress\UserConfig;
+use Impress\Support\UserConfig;
 
 use Illuminate\Http\Request;
 

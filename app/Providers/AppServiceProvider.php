@@ -3,7 +3,7 @@
 namespace Impress\Providers;
 
 use Impress\Content;
-use Impress\UserConfig;
+use Impress\Support\UserConfig;
 
 use Illuminate\Support\ServiceProvider;
 

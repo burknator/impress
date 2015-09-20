@@ -1,6 +1,6 @@
 <?php
 
-namespace Impress;
+namespace Impress\Support;
 
 use Impress\Exceptions\UserConfig\NotReadableException;
 
