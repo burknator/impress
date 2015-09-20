@@ -98,7 +98,7 @@ class Config
                 continue;
             }
 
-            // Should match ony not commented lines of JSON assignments
+            // Should match only not commented lines of JSON assignments
             $pattern = '~(^\s*"' . preg_quote($setting) . '"\s*:\s*)".*"(.*)~mi';
 
             // Replace line with new value while keeping any previous whitespace
