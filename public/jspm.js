@@ -20,6 +20,7 @@ System.config({
     "core-js": "npm:core-js@1.1.4",
     "jstimezonedetect": "npm:jstimezonedetect@1.0.5",
     "lodash": "npm:lodash@3.10.1",
+    "slugg": "npm:slugg@0.1.2",
     "vue": "npm:vue@0.12.15",
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.5.0"

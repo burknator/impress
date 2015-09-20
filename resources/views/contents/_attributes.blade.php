@@ -3,17 +3,20 @@
     <label for="title" class="sr-only">Title</label>
     {!! Form::text('title', null, [
         'class' => 'form-control',
-        'placeholder' => 'What is this about?'
+        'placeholder' => 'What is this about?',
+        'v-model' => 'title',
+        'v-on' => 'keyup: makeSlug'
     ]) !!}
     <p class="help-block text-right">
-        <span id="slug-preview">what-is-this-about</span>
+        <span id="slug-preview">@{{slug}}</span>
     </p>
 </div>
 
 <div class="form-group hidden">
     <label for="slug" class="sr-only">Slug</label>
     {!! Form::text('slug', null, [
-        'class' => 'form-control'
+        'class' => 'form-control',
+        'v-model' => 'slug'
     ]) !!}
 </div>
 
