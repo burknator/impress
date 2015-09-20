@@ -7,6 +7,7 @@
 	<title>{{ $title or 'impress'}}</title>
 
 	@section('head-styles')
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 		<link href="/css/app.css" rel="stylesheet">
 	@stop
 	@yield('head-styles')
