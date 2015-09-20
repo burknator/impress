@@ -99,10 +99,15 @@ class Config
             }
 
             // Should match only not commented lines of JSON assignments
-            $pattern = '~(^\s*"' . preg_quote($setting) . '"\s*:\s*)".*"(.*)~mi';
+            // TODO But what about array values?
+            $pattern = '~(^\s*"' . preg_quote($setting) . '"\s*:\s*)(".*"|true|false)(.*)~mi';
 
             // Replace line with new value while keeping any previous whitespace
-            $replacement = '$1"' . $config[$setting] . '"$2';
+            if (is_bool($config[$setting])) {
+                $replacement = '$1' . ($config[$setting] ? 'true' : 'false') . '$3';
+            } else {
+                $replacement = '$1"' . $config[$setting] . '"$3';
+            }
 
             $fileContent = preg_replace($pattern, $replacement, $fileContent);
         }
