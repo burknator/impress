@@ -6,7 +6,14 @@ import Vue from 'vue'
 new Vue({
     el: '#i-settings-edit',
 
-    data: impress.$data(),
+    data: {
+        app: {
+            timezone: '',
+            autosave: {
+                enabled: null
+            }
+        }
+    },
 
     methods: {
         redetectTimezone: function() {

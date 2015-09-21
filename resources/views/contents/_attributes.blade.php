@@ -7,17 +7,24 @@
         'v-model' => 'title',
         'v-on' => 'keyup: makeSlug'
     ]) !!}
-    <p class="help-block text-right">
-        <span id="slug-preview">@{{slug}}</span>
+    <p class="help-block text-right" v-show="autoSlug" v-on="click: autoSlug = false">
+        {{ url() }}/@{{slug}}
     </p>
 </div>
 
-<div class="form-group hidden">
-    <label for="slug" class="sr-only">Slug</label>
-    {!! Form::text('slug', null, [
-        'class' => 'form-control',
-        'v-model' => 'slug'
-    ]) !!}
+<div class="form-group" v-show="!autoSlug" @hide>
+    <label for="slug">Slug</label>
+    <div class="input-group">
+        <div class="input-group-addon">
+            <label>
+                <input type="checkbox" name="autoSlug" id="autoSlug" v-model="autoSlug"> Automatic
+            </label>
+        </div>
+        {!! Form::text('slug', null, [
+            'class' => 'form-control',
+            'v-model' => 'slug'
+        ]) !!}
+    </div>
 </div>
 
 <div class="row">

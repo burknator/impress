@@ -54,6 +54,10 @@ class ViewServiceProvider extends ServiceProvider
         Blade::directive('checked', function ($expression) {
             return "<?= ($expression ? ' checked ' : '') ?>";
         });
+
+        Blade::directive('hide', function ($expression) {
+            return ' style="display: none;" ';
+        });
     }
 
     /**
