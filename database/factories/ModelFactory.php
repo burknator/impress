@@ -33,7 +33,7 @@ $factory->define(Impress\Tag::class, function (Faker\Generator $faker) {
 
 $factory->define(Impress\TagColor::class, function (Faker\Generator $faker) {
     return [
-        'hex' => $faker->hexcolor
+        'hex' => ltrim($faker->hexcolor, '#')
     ];
 });
 
@@ -47,6 +47,6 @@ $factory->define(Impress\Category::class, function (Faker\Generator $faker) {
 
 $factory->define(Impress\CategoryColor::class, function (Faker\Generator $faker) {
     return [
-        'hex' => $faker->hexcolor
+        'hex' => ltrim($faker->hexcolor, '#')
     ];
 });
