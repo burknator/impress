@@ -14,6 +14,18 @@ let impress = {
         } else {
             return custom
         }
+    },
+
+    /**
+     * Prevents that a link is actually opened. Will only replace the history state with the href attribute of the link.
+     *
+     * @param  {Vue Event} $event
+     * @return {void}
+     */
+    handleLinkClick: function ($event) {
+        $event.preventDefault()
+
+        window.history.replaceState(null, null, $event.target.href)
     }
 }
 

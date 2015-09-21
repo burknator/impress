@@ -4,8 +4,10 @@
     <script>
         window.$data = {
             "categories": {!! $categories->toJson() !!},
-            "editing": {{ isset($category) ? 'true' : false }},
-            "category": {!! $category->toJson() !!}
+            "editing": {{ isset($category) ? 'true' : 'false' }},
+            @exists($category)
+                "category": {!! $category->toJson() !!}
+            @endexists
         }
     </script>
     @parent
@@ -44,7 +46,7 @@
                         <td>@{{ category.name }}</td>
                         <td>@{{ category.slug }}</td>
                         <td>0</td>
-                        <td><a href="javascript:void(0);" v-on="click: edit(category)">Edit</a></td>
+                        <td><a href="@{{ category.edit_link }}" v-on="click: edit(category, $event)">Edit</a></td>
                     </tr>
                 </table>
             @endif

@@ -37,14 +37,15 @@ new Vue({
             if (this.autoSlug) this.category.slug = slug(this.category.name)
         },
 
-        edit: function (category) {
+        edit: function (category, e) {
+            impress.handleLinkClick(e)
+
             this.editing = true;
             this.category = category;
         },
 
-        create: function (e)
-        {
-            e.preventDefault();
+        create: function (e) {
+            impress.handleLinkClick(e)
 
             this.editing = false;
 
