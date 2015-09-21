@@ -1,13 +1,27 @@
 @extends('app')
 
+@section('foot-scripts')
+    <script>
+        window.$data = {
+            "categories": {!! $categories->toJson() !!},
+            "editing": {{ isset($category) ? 'true' : false }},
+            "category": {!! $category->toJson() !!}
+        }
+    </script>
+    @parent
+@stop
+
+@section('container-id', 'i-categories-edit')
+
 @section('content')
     <div class="row">
         <div class="col-md-6">
-            @exists ($category)
+            <div v-if="editing">
                 @include ('categories.edit')
-            @else
+            </div>
+            <div v-if="!editing">
                 @include ('categories.create')
-            @endif
+            </div>
         </div>
         <div class="col-md-6">
             @if($categories->isEmpty())
@@ -26,14 +40,12 @@
                         <th>Contents</th>
                         <th></th>
                     </tr>
-                    @foreach($categories as $category)
-                        <tr>
-                            <td>{{ $category->name }}</td>
-                            <td>{{ $category->slug }}</td>
-                            <td>{{ $category->contents()->count() }}</td>
-                            <td><a href="{!! route('i.categories.edit', ['category' => $category->slug]) !!}">Edit</a></td>
-                        </tr>
-                    @endforeach
+                    <tr v-repeat="category in categories">
+                        <td>@{{ category.name }}</td>
+                        <td>@{{ category.slug }}</td>
+                        <td>0</td>
+                        <td><a href="javascript:void(0);" v-on="click: edit(category)">Edit</a></td>
+                    </tr>
                 </table>
             @endif
         </div>
