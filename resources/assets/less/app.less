@@ -31,3 +31,33 @@ body, label, .checkbox label {
     text-align: center;
     color: lighten(@text-color, 25%);
 }
+
+.form-control-color {
+    position: relative;
+
+    padding: 0 !important;
+
+    & > span {
+        display: none;
+
+        position: absolute;
+        top: 8px;
+        left: 10px;
+
+        color: #fff;
+    }
+
+    &.selected {
+        & > span {
+            display: inline-block;
+        }
+    }
+
+    label {
+        padding: 0;
+        margin: 0;
+        text-indent: -999px;
+        cursor: pointer;
+        height: 32px;
+    }
+}

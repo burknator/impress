@@ -6718,5 +6718,26 @@ label,
   text-align: center;
   color: #737373;
 }
+.form-control-color {
+  position: relative;
+  padding: 0 !important;
+}
+.form-control-color > span {
+  display: none;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #fff;
+}
+.form-control-color.selected > span {
+  display: inline-block;
+}
+.form-control-color label {
+  padding: 0;
+  margin: 0;
+  text-indent: -999px;
+  cursor: pointer;
+  height: 32px;
+}
 
 /*# sourceMappingURL=app.css.map */

@@ -2,6 +2,6 @@
 
 @include('errors')
 
-{!! Form::open(['method' => 'post', 'route' => 'i.tags.store', 'class' => 'form-horizontal']) !!}
+{!! Form::open(['method' => 'post', 'route' => 'i.tags.store', 'class' => 'form-horizontal', 'id' => 'i-tags-edit']) !!}
     @include('tags._attributes')
 {!! Form::close() !!}
