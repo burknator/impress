@@ -12,6 +12,8 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug', 'color_id'];
 
+    protected $appends = ['update_link'];
+
     public function color()
     {
         return $this->belongsTo(CategoryColor::class);
@@ -20,6 +22,11 @@ class Category extends Model
     public function contents()
     {
         return $this->hasMany(Content::class);
+    }
+
+    public function getUpdateLinkAttribute()
+    {
+        return route('i.categories.update', ['categories' => $this->slug]);
     }
 
 }
