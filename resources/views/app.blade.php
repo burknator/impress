@@ -25,8 +25,6 @@
 				@unless(Auth::guest())
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="{{ route('i.contents.index') }}">@icon('list') Contents</a></li>
-						<li><a href="{{ route('i.settings.index') }}">@icon('cog') Settings</a></li>
-						<li><a href="#">@icon('user') {{ Auth::user()->email }}</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@icon('option-horizontal')</a>
 							<ul class="dropdown-menu" role="menu">
@@ -41,6 +39,8 @@
 								<li><a href="{{ route('logout') }}">@icon('off') Logout</a></li>
 							</ul>
 						</li>
+						<li><a href="{{ route('i.settings.index') }}">@icon('cog') Settings</a></li>
+						<li><a href="#">@icon('user') {{ Auth::user()->email }}</a></li>
 						<li><a href="{{ route('logout') }}">@icon('off')</a></li>
 					</ul>
 				@endunless
