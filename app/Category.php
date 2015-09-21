@@ -12,7 +12,7 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug', 'color_id'];
 
-    protected $appends = ['update_link'];
+    protected $appends = ['update_link', 'edit_link'];
 
     public function color()
     {
@@ -27,6 +27,11 @@ class Category extends Model
     public function getUpdateLinkAttribute()
     {
         return route('i.categories.update', ['categories' => $this->slug]);
+    }
+
+    public function getEditLinkAttribute()
+    {
+        return route('i.categories.edit', ['categories' => $this->slug]);
     }
 
 }
