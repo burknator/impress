@@ -6728,6 +6728,7 @@ label,
   top: 8px;
   left: 10px;
   color: #fff;
+  text-shadow: 0px 1px 3px #000000;
 }
 .form-control-color.selected > span {
   display: inline-block;
