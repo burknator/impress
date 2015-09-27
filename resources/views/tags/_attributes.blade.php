@@ -1,4 +1,4 @@
-{!! Form::hidden('id') !!}
+{!! Form::hidden('id', '@{{ tag.id }}') !!}
 
 <div class="form-group">
     <label for="name" class="col-md-3 control-label">Name</label>
@@ -6,7 +6,7 @@
     <div class="col-md-9">
         {!! Form::text('name', null, [
             'class' => 'form-control',
-            'v-model' => 'name'
+            'v-model' => 'tag.name'
         ]) !!}
     </div>
 </div>
@@ -18,7 +18,7 @@
         <div class="input-group">
             {!! Form::text('slug', null, [
                 'class' => 'form-control',
-                'v-model' => 'slug',
+                'v-model' => 'tag.slug',
                 'v-attr' => 'readonly: autoSlug',
                 'readonly'
             ]) !!}
@@ -34,11 +34,11 @@
 
     <div class="col-md-9">
         @foreach($colors as $color)
-            <div class="radio-inline form-control-color" style="background-color: #{{ $color->hex }}" v-class="selected: color == {{ $color->id }}">
+            <div class="radio-inline form-control-color" style="background-color: #{{ $color->hex }}" v-class="selected: tag.color_id == {{ $color->id }}">
                 @icon('ok')
                 <label>
                     {!! Form::radio('color_id', $color->id, null, [
-                        'v-model' => 'color'
+                        'v-model' => 'tag.color_id'
                     ]) !!} {{ $color->hex }}
                 </label>
             </div>
@@ -47,12 +47,9 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9 col-md-offset-3">
         <div class="pull-right">
-            @if (isset($cancelButton) && $cancelButton)
-                <a href="{{ route('i.tags.index') }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
-            @endif
-            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Save</button>
+            <button type="submit" class="btn btn-success">@icon('ok') Save</button>
         </div>
     </div>
 </div>

@@ -2,9 +2,6 @@
 
 @include('errors')
 
-<form method="post" action="@{{ category.update_link }}" class="form-horizontal" id="i-categories-edit">
-    <input type="hidden" name="_method" value="PUT">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+{!! Form::model($category, ['route' => ['i.categories.update', $category->slug], 'method' => 'put', 'class' => 'form-horizontal']) !!}
     @include('categories._attributes')
-</form>
+{!! Form::close() !!}

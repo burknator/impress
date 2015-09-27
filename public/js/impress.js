@@ -9,8 +9,8 @@ let impress = {
      * @return {Object}
      */
     $data: function(custom) {
-        if (window.$data) {
-            return _.assign(custom || {}, _.cloneDeep(window.$data))
+        if (window.$impress) {
+            return _.assign(custom || {}, _.cloneDeep(window.$impress))
         } else {
             return custom
         }

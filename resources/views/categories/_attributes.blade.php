@@ -54,8 +54,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="pull-right">
-			<a href="{{ route('i.categories.index') }}" class="btn btn-danger" v-show="editing" v-on="click: create">@icon('remove') Cancel</a>
-			<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Save</button>
+			<button type="submit" class="btn btn-success">@icon('ok') Save</button>
 		</div>
 	</div>
 </div>

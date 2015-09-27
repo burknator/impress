@@ -2,7 +2,7 @@
 
 @section('foot-scripts')
     <script>
-        window.$data = {
+        window.$impress = {
             "categories": {!! $categories->toJson() !!},
             "editing": {{ isset($category) ? 'true' : 'false' }},
             @exists($category)
@@ -18,12 +18,11 @@
 @section('content')
     <div class="row">
         <div class="col-md-6">
-            <div v-if="editing">
+            @exists($category)
                 @include ('categories.edit')
-            </div>
-            <div v-if="!editing">
+            @else
                 @include ('categories.create')
-            </div>
+            @endexists
         </div>
         <div class="col-md-6">
             @if($categories->isEmpty())
@@ -34,7 +33,7 @@
                     </p>
                 </div>
             @else
-                <h4>Categories</h4>
+                <h4>Categories <a href="{{ route('i.categories.create') }}" class="btn btn-sm btn-link text-uppercase">@icon('plus') New</a></h4>
                 <table class="table">
                     <tr>
                         <th>Name</th>
@@ -46,7 +45,7 @@
                         <td>@{{ category.name }}</td>
                         <td>@{{ category.slug }}</td>
                         <td>0</td>
-                        <td><a href="@{{ category.edit_link }}" v-on="click: edit(category, $event)">Edit</a></td>
+                        <td><a href="@{{ category.edit_link }}">Edit</a></td>
                     </tr>
                 </table>
             @endif
