@@ -3,18 +3,7 @@
 @section('foot-scripts')
     <script>
         window.$impress = {
-            "tags": {!! collect($tags)->map(function($el) {
-                $count = $el->contents()->count();
-                $hex = $el->color->hex;
-
-                $el = $el->toArray();
-
-                $el['count'] = $count;
-                $el['hex'] = $hex;
-                $el['selected'] = false;
-
-                return $el;
-            })->toJson() !!},
+            "tags": {!! $tags->toJson() !!},
             @exists($tag)
                 "tag": {!! $tag->toJson() !!}
             @endexists
@@ -95,10 +84,10 @@
                 </thead>
                 <tbody>
                     <tr v-repeat="tag in tags" v-on="click: tag.selected = !tag.selected">
-                        <td style="border-left-color: #@{{ tag.hex }}"><input type="checkbox" v-model="tag.selected"></td>
+                        <td style="border-left-color: #@{{ tag.color.hex }}"><input type="checkbox" v-model="tag.selected"></td>
                         <td><a href="@{{ tag.edit_link }}">@{{ tag.name }}</a></td>
                         <td>@{{ tag.slug }}</td>
-                        <td>@{{ tag.count }}</td>
+                        <td>@{{ tag.contents }}</td>
                         <td>
                             <a href="@{{ tag.edit_link }}">Edit</a>
                         </td>

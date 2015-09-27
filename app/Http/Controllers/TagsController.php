@@ -17,7 +17,20 @@ class TagsController extends Controller
      */
     public function index()
     {
-        return view('tags.index')->with('tags', Tag::all());
+        $tags = Tag::with('contents', 'color')->get()->map(function (Tag $tag) {
+            $json = [
+                'name'      => $tag->name,
+                'slug'      => $tag->slug,
+                'contents'  => $tag->contents->count(),
+                'color'     => $tag->color,
+                'selected'  => false,
+                'edit_link' => $tag->edit_link
+            ];
+
+            return $json;
+        });
+
+        return view('tags.index')->with('tags', $tags);
     }
 
     /**
