@@ -3,7 +3,12 @@
 @section('foot-scripts')
     <script>
         window.$impress = {
-            "tags": {!! collect($tags->toArray())->map(function($el) {
+            "tags": {!! collect($tags)->map(function($el) {
+                $count = $el->contents()->count();
+
+                $el = $el->toArray();
+
+                $el['count'] = $count;
                 $el['selected'] = false;
 
                 return $el;
@@ -91,7 +96,7 @@
                         <td><input type="checkbox" v-model="tag.selected"></td>
                         <td><a href="@{{ tag.edit_link }}">@{{ tag.name }}</a></td>
                         <td>@{{ tag.slug }}</td>
-                        <td>0</td>
+                        <td>@{{ tag.count }}</td>
                         <td>
                             <a href="#delete-tag-form"
                                data-toggle="modal"
