@@ -50,25 +50,29 @@
         </div>
         <div class="col-md-6">
             <h4>Tags <a href="{{ route('i.tags.create') }}" class="btn btn-sm btn-link text-uppercase">@icon('plus') New</a></h4>
-            <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Slug</th>
-                    <th>Usage</th>
-                    <th></th>
-                </tr>
-                <tr v-repeat="tag in tags">
-                    <td><a href="@{{ tag.edit_link }}">@{{ tag.name }}</a></td>
-                    <td>@{{ tag.slug }}</td>
-                    <td>0</td>
-                    <td>
-                        <a href="javascript:void(0);"
-                           data-toggle="modal"
-                           data-target="#delete-tag-form"
-                           class="text-danger"
-                           v-on="click: deleteTag = tag">Delete</a>
-                    </td>
-                </tr>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Slug</th>
+                        <th>Usage</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-repeat="tag in tags">
+                        <td><a href="@{{ tag.edit_link }}">@{{ tag.name }}</a></td>
+                        <td>@{{ tag.slug }}</td>
+                        <td>0</td>
+                        <td>
+                            <a href="javascript:void(0);"
+                               data-toggle="modal"
+                               data-target="#delete-tag-form"
+                               class="text-danger"
+                               v-on="click: deleteTag = tag">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
