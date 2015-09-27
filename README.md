@@ -15,8 +15,11 @@ Will be slow. As I said, I'm currently studying full-time and have a part-time j
 
 ## Powered by
 
- - Laravel
- - https://bitbucket.org/pellepim/jstimezonedetect
+ - [Laravel](http://laravel.com)
+ - [Vue](http://vuejs.org/)
+ - [JSPM](http://jspm.io/)
+ - [Bootstrap](http://getbootstrap.com/)
+ - [lodash](https://lodash.com/)
 
 ---
 
