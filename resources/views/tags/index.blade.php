@@ -3,8 +3,11 @@
 @section('foot-scripts')
     <script>
         window.$impress = {
-            "tags": {!! $tags->toJson() !!},
-            "editing": {{ isset($tag) ? 'true' : 'false' }},
+            "tags": {!! collect($tags->toArray())->map(function($el) {
+                $el['selected'] = false;
+
+                return $el;
+            })->toJson() !!},
             @exists($tag)
                 "tag": {!! $tag->toJson() !!}
             @endexists
@@ -53,6 +56,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th><input type="checkbox" v-model="checkedAll"></th>
                         <th>Name</th>
                         <th>Slug</th>
                         <th>Usage</th>
@@ -60,7 +64,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-repeat="tag in tags">
+                    <tr v-repeat="tag in tags" v-on="click: tag.selected = !tag.selected">
+                        <td><input type="checkbox" v-model="tag.selected"></td>
                         <td><a href="@{{ tag.edit_link }}">@{{ tag.name }}</a></td>
                         <td>@{{ tag.slug }}</td>
                         <td>0</td>

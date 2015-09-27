@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import {impress} from '/js/impress'
 import slug from 'slugg'
+import _ from 'lodash'
 
 new Vue({
     el: '#i-tags-edit',
@@ -8,6 +9,7 @@ new Vue({
     data: impress.$data({
         autoSlug : true,
         deleteTag : {},
+        checkedAll : false,
         tag: {
             id: '',
             name: '',
@@ -29,6 +31,12 @@ new Vue({
 
         this.$watch('autoSlug', (newVal) => {
             if (newVal) this.tag.slug = slug(this.tag.name)
+        })
+
+        this.$watch('checkedAll', (newVal) => {
+            _.each(this.tags, (tag) => {
+                tag.selected = newVal
+            })
         })
     }
 })
