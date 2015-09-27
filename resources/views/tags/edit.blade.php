@@ -39,7 +39,7 @@
                         <th>Last Editor</th>
                     </tr>
                     <tr v-if="contents.length == 0">
-                        <td colspan="6" class="placeholder-block">
+                        <td colspan="7" class="placeholder-block">
                             <h4>No contents for this tag</h4>
                         </td>
                     </tr>
