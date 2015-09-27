@@ -25,9 +25,9 @@ $factory->define(Impress\Type::class, function (Faker\Generator $faker) {
 
 $factory->define(Impress\Tag::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->word,
-        'slug' => $faker->word,
-        'color_id' => factory(Impress\TagColor::class)->create()->id
+        'name' => $faker->sentence(2),
+        'slug' => $faker->slug,
+        'color_id' => '1'
     ];
 });
 
