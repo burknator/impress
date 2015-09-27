@@ -5,10 +5,12 @@
         window.$impress = {
             "tags": {!! collect($tags)->map(function($el) {
                 $count = $el->contents()->count();
+                $hex = $el->color->hex;
 
                 $el = $el->toArray();
 
                 $el['count'] = $count;
+                $el['hex'] = $hex;
                 $el['selected'] = false;
 
                 return $el;
@@ -21,7 +23,7 @@
     @parent
 @stop
 
-@section('container-id', 'i-tags-edit')
+@section('container-id', 'i-tags-index')
 
 @section('content')
     <div id="delete-tag-form" class="modal fade" v-if="deleteTag.id != ''">
@@ -79,24 +81,27 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h4>Tags <a href="{{ route('i.tags.create') }}" class="btn btn-sm btn-link text-uppercase">@icon('plus') New</a></h4>
+            <h1>Tags <a href="{{ route('i.tags.create') }}" class="btn btn-sm btn-link text-uppercase">@icon('plus') New</a></h1>
             <a href="#delete-tags-form" class="btn btn-danger btn-sm" data-toggle="modal" v-attr="disabled: selected.length == 0">Delete</a>
-            <table class="table table-hover">
+            <table class="table table-hover tag-list">
                 <thead>
                     <tr>
                         <th><input type="checkbox" v-model="checkedAll"></th>
                         <th>Name</th>
                         <th>Slug</th>
                         <th>Usage</th>
-                        <th></th>
+                        <th colspan="2"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-repeat="tag in tags" v-on="click: tag.selected = !tag.selected">
-                        <td><input type="checkbox" v-model="tag.selected"></td>
+                        <td style="border-left-color: #@{{ tag.hex }}"><input type="checkbox" v-model="tag.selected"></td>
                         <td><a href="@{{ tag.edit_link }}">@{{ tag.name }}</a></td>
                         <td>@{{ tag.slug }}</td>
                         <td>@{{ tag.count }}</td>
+                        <td>
+                            <a href="@{{ tag.edit_link }}">Edit</a>
+                        </td>
                         <td>
                             <a href="#delete-tag-form"
                                data-toggle="modal"

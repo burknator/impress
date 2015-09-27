@@ -1,9 +1,9 @@
 {!! Form::hidden('id', '@{{ tag.id }}') !!}
 
 <div class="form-group">
-    <label for="name" class="col-md-3 control-label">Name</label>
+    <label for="name" class="col-md-2 control-label">Name</label>
 
-    <div class="col-md-9">
+    <div class="col-md-5">
         {!! Form::text('name', null, [
             'class' => 'form-control',
             'v-model' => 'tag.name'
@@ -12,9 +12,9 @@
 </div>
 
 <div class="form-group">
-    <label for="slug" class="col-md-3 control-label">Slug</label>
+    <label for="slug" class="col-md-2 control-label">Slug</label>
 
-    <div class="col-md-9">
+    <div class="col-md-5">
         <div class="input-group">
             {!! Form::text('slug', null, [
                 'class' => 'form-control',
@@ -30,9 +30,9 @@
 </div>
 
 <div class="form-group">
-    <label for="color_id" class="col-md-3 control-label">Color</label>
+    <label for="color_id" class="col-md-2 control-label">Color</label>
 
-    <div class="col-md-9">
+    <div class="col-md-5">
         @foreach($colors as $color)
             <div class="radio-inline form-control-color" style="background-color: #{{ $color->hex }}" v-class="selected: tag.color_id == {{ $color->id }}">
                 @icon('ok')
@@ -47,7 +47,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-9 col-md-offset-3">
+    <div class="col-md-5 col-md-offset-2">
         <div class="pull-left">
             <a href="javascript:void(0);" v-show="tag.id != ''" v-on="click: deleteTag = tag" data-toggle="modal" data-target="#delete-tag-form" class="btn btn-link">Delete</a>
         </div>

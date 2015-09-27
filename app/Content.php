@@ -23,6 +23,8 @@ class Content extends Model
 
     protected $nullable = ['category_id', 'last_editor_id'];
 
+    protected $appends = ['edit_link'];
+
     protected $dates = ['published_at'];
 
     public function type()
@@ -60,5 +62,10 @@ class Content extends Model
     {
         return $query->where('published_at', '>', Carbon::now())
                      ->orWhere('published_at', '=', '0000-00-00 00:00:00');
+    }
+
+    public function getEditLinkAttribute()
+    {
+        return route('i.contents.edit', ['contents' => $this->slug]);
     }
 }

@@ -4,6 +4,7 @@ namespace Impress\Http\Controllers;
 
 use Impress\Http\Controllers\Controller;
 use Impress\Tag;
+use Impress\Content;
 
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-        return view('tags.index')->with('tags', Tag::all());
+        return view('tags.create');
     }
 
     /**
@@ -67,9 +68,30 @@ class TagsController extends Controller
      */
     public function edit(Tag $tag)
     {
-        $tags = Tag::all();
+        $contents = $tag->contents()->with('tags.color', 'lastEditor', 'author', 'type')->get();
 
-        return view('tags.index', compact('tag', 'tags'));
+        $contents = $contents->map(function (Content $content) {
+            $tags = $content->tags->map(function (Tag $tag) {
+                return array_only($tag->toArray(), ['id', 'name', 'color']);
+            })->toArray();
+
+            $json = [
+                'title'             => $content->title,
+                'created_at'        => $content->created_at,
+                'created_at_diff'   => $content->created_at->diffForHumans(),
+                'published_at'      => $content->published_at,
+                'published_at_diff' => $content->published_at->diffForHumans(),
+                'tags'              => $tags,
+                'author'            => $content->author->email,
+                'last_editor'       => isset($content->lastEditor) ? $content->lastEditor->email : null,
+                'edit_link'         => $content->edit_link,
+                'type'              => $content->type->name
+            ];
+
+            return $json;
+        });
+
+        return view('tags.edit', compact('tag', 'contents'));
     }
 
     /**
