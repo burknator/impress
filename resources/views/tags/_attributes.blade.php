@@ -48,6 +48,9 @@
 
 <div class="row">
     <div class="col-md-9 col-md-offset-3">
+        <div class="pull-left">
+            <a href="javascript:void(0);" v-on="click: deleteTag = tag" data-toggle="modal" data-target="#delete-tag-form" class="btn btn-link">Delete</a>
+        </div>
         <div class="pull-right">
             <button type="submit" class="btn btn-success">@icon('ok') Save</button>
         </div>

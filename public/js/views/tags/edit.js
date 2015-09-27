@@ -7,9 +7,14 @@ new Vue({
 
     data: impress.$data({
         autoSlug : true,
+        deleteTag : {},
         tag: {
+            id: '',
             name: '',
-            slug: ''
+            slug: '',
+            color_id: '',
+            edit_link: '',
+            destroy_link: ''
         }
     }),
 

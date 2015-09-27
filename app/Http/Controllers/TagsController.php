@@ -89,11 +89,14 @@ class TagsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Impress\Tag              $tag
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Tag $tag)
     {
-        //
+        $tag->delete();
+
+        return back();
     }
 }
