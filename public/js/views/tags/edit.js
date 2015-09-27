@@ -38,5 +38,17 @@ new Vue({
                 tag.selected = newVal
             })
         })
+    },
+
+    computed: {
+        selected: function () {
+            let selected = []
+
+            _.each(this.tags, (tag) => {
+                if (tag.selected) selected.push(tag)
+            })
+
+            return selected
+        }
     }
 })
