@@ -5,9 +5,9 @@
         'class' => 'form-control',
         'placeholder' => 'What is this about?',
         'v-model' => 'title',
-        'v-on' => 'keyup: makeSlug'
+        'v-on:keyup' => 'makeSlug'
     ]) !!}
-    <p class="help-block text-right" v-show="autoSlug" v-on="click: autoSlug = false">
+    <p class="help-block text-right" v-show="autoSlug" v-on:click="autoSlug = false">
         {{ url() }}/@{{slug}}
     </p>
 </div>

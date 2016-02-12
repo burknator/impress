@@ -53,11 +53,7 @@
 	</div>
 
 	@section('foot-scripts')
-		<script src="/jspm_packages/system.js"></script>
-		<script src="/jspm.js"></script>
-		<script>
-			System.import('js/main.js');
-		</script>
+		<script src="/js/main.js"></script>
 	@stop
 	@yield('foot-scripts')
 </body>
