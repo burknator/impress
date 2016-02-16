@@ -11,49 +11,57 @@ use Illuminate\Http\Request;
 class SettingsController extends Controller
 {
     /**
-     * Create a list of timezones, indexed by their offset and identifier and the ciyt as value.
+     * Create a sorted list of timezones from PHP's \DateTimeZone::listIdentifiers().
      *
      * @return array
      */
-    protected function createTimezoneList()
+    protected function rawTimezoneList()
     {
-        $timezoneIdentifiers = \DateTimeZone::listIdentifiers();
         $utcTime = new \DateTime('now', new \DateTimeZone('UTC'));
 
-        $tempTimezones = array();
-        foreach ($timezoneIdentifiers as $timezoneIdentifier) {
+        $timezones = [];
+        foreach (\DateTimeZone::listIdentifiers() as $timezoneIdentifier) {
             $currentTimezone = new \DateTimeZone($timezoneIdentifier);
 
-            $tempTimezones[] = array(
-                'offset' => (int)$currentTimezone->getOffset($utcTime),
+            $timezones[] = [
+                'offset' => (int) $currentTimezone->getOffset($utcTime),
                 'identifier' => $timezoneIdentifier
-            );
+            ];
         }
 
-        // Sort the array by offset,identifier ascending
-        usort($tempTimezones, function($a, $b) {
+        // Sort the timezones by offset, identifier ascending
+        usort($timezones, function($a, $b) {
             return ($a['offset'] == $b['offset'])
                 ? strcmp($a['identifier'], $b['identifier'])
                 : $a['offset'] - $b['offset'];
         });
+    }
 
-        $timezoneList = array();
-        foreach ($tempTimezones as $tz) {
-            $sign = ($tz['offset'] > 0) ? '+' : '-';
-            $offset = gmdate('H:i', abs($tz['offset']));
+    /**
+     * Create a list of timezones, indexed by their offset and identifier and the city as value.
+     *
+     * @return array
+     */
+    protected function timezoneList()
+    {
+        $timezoneList = [];
+        foreach ($this->rawTimezoneList() as $timezone) {
+            $sign = ($timezone['offset'] > 0) ? '+' : '-';
+            $offset = $sign . gmdate('H:i', abs($timezone['offset']));
 
-            $group = $city = $tz['identifier'];
-            if (strpos($tz['identifier'], '/') !== false) {
-                list($group, $city) = explode('/', $tz['identifier']);
+            $group = null;
+            $city = $timezone['identifier'];
+            if (strpos($timezone['identifier'], '/') !== false) {
+                list($group, $city) = explode('/', $timezone['identifier']);
             }
 
             $city = str_replace('_', ' ', $city);
 
-            if ( ! isset($timezoneList[$sign . $offset])) {
-                $timezoneList[$sign . $offset] = [];
+            if ( ! isset($timezoneList[$offset])) {
+                $timezoneList[$offset] = [];
             }
 
-            $timezoneList[$sign . $offset][$tz['identifier']] = $city;
+            $timezoneList[$offset][$timezone['identifier']] = $city;
         }
 
         return $timezoneList;
@@ -66,8 +74,8 @@ class SettingsController extends Controller
      */
     public function index(Config $userConfig)
     {
-        $timezoneList = $this->createTimezoneList();
-        $userConfig   = $userConfig->loadNested();
+        $timezoneList = $this->timezoneList();
+        $userConfig = $userConfig->loadNested();
 
         return view('settings.index', compact('timezoneList', 'userConfig'));
     }
@@ -85,12 +93,12 @@ class SettingsController extends Controller
         // a setting in a way it's not intended to be.
 
         $this->validate($request, [
-            'timezone'         => 'timezone',
+            'timezone' => 'timezone',
             'autosave-enabled' => 'boolean'
         ]);
 
         $userConfig->save([
-            'app.timezone'         => $request->input('timezone'),
+            'app.timezone' => $request->input('timezone'),
             'app.autosave.enabled' => (bool) $request->input('autosave-enabled', false)
         ]);
 
