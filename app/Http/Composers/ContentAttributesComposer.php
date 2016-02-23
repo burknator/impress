@@ -17,7 +17,7 @@ class ContentAttributesComposer
     public function __construct()
     {
         $this->types = Type::flatList();
-        $this->categories = array_prepend(Category::flatList(), '', 'none');
+        $this->categories = array_prepend(Category::flatList(), 'none', '');
         $this->tags = Tag::flatList();
     }
 

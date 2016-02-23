@@ -27,6 +27,10 @@ class Content extends Model
 
     protected $dates = ['published_at'];
 
+    protected $attributes = [
+        'published_at' => '0000-00-00 00:00:00'
+    ];
+
     public function type()
     {
         return $this->belongsTo(Type::class);

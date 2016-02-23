@@ -54,7 +54,8 @@ class ContentsController extends Controller
 
         auth()->user()->contents()->save($content);
 
-        $content->tags()->sync($request->get('tags'));
+        if ($request->has('tags'))
+            $content->tags()->sync($request->get('tags'));
 
         return redirect()->route('i.contents.edit', ['contents' => $content->slug]);
     }
@@ -105,7 +106,8 @@ class ContentsController extends Controller
 
         // The last editor relationship is saved via a model event in AppServiceProvider.
 
-        $content->tags()->sync($request->get('tags'));
+        if ($request->has('tags'))
+            $content->tags()->sync($request->get('tags'));
 
         return redirect()->route('i.contents.edit', [$content->slug]);
     }
