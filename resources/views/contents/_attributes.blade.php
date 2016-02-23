@@ -62,7 +62,7 @@
         </div>
 
         <div class="pull-right">
-            <button type="submit" class="btn btn-default navbar-btn">@icon('send') Save & Publish</button>
+            <button type="submit" class="btn btn-default navbar-btn">@icon('send') Save &amp; Publish</button>
             <button type="submit" class="btn btn-success navbar-btn">@icon('floppy-disk') Save</button>
         </div>
     </div>
