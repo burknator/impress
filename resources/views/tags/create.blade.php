@@ -1,5 +1,7 @@
 @extends('app')
 
+@section('container-id', 'i-tags-form')
+
 @section('content')
     @include('errors')
 

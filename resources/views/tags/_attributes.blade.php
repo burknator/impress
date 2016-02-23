@@ -19,7 +19,7 @@
             {!! Form::text('slug', null, [
                 'class' => 'form-control',
                 'v-model' => 'tag.slug',
-                'v-attr' => 'readonly: autoSlug',
+                'v-bind:readonly' => 'autoSlug',
                 'readonly'
             ]) !!}
             <label class="input-group-addon">
@@ -34,7 +34,8 @@
 
     <div class="col-md-5">
         @foreach($colors as $color)
-            <div class="radio-inline form-control-color" style="background-color: #{{ $color->hex }}" v-class="selected: tag.color_id == {{ $color->id }}">
+            <div class="radio-inline form-control-color" style="background-color: #{{ $color->hex }}" v-bind:class="{ 'selected': tag.color_id == {{ $color->id }} }"
+            >
                 @icon('ok')
                 <label>
                     {!! Form::radio('color_id', $color->id, null, [
@@ -49,7 +50,7 @@
 <div class="row">
     <div class="col-md-5 col-md-offset-2">
         <div class="pull-left">
-            <a href="javascript:void(0);" v-show="tag.id != ''" v-on="click: deleteTag = tag" data-toggle="modal" data-target="#delete-tag-form" class="btn btn-link">Delete</a>
+            <a href="javascript:void(0);" v-show="tag.id != ''" v-on:click="deleteTag = tag" data-toggle="modal" data-target="#delete-tag-form" class="btn btn-link">Delete</a>
         </div>
         <div class="pull-right">
             <button type="submit" class="btn btn-success">@icon('ok') Save</button>

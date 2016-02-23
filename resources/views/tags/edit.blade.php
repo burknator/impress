@@ -10,7 +10,7 @@
     @parent
 @stop
 
-@section('container-id', 'i-tags-edit')
+@section('container-id', 'i-tags-form')
 
 @section('content')
     @include('errors')

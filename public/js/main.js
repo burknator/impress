@@ -38232,11 +38232,13 @@ require('./views/categories/edit.coffee');
 
 require('./views/tags/edit.coffee');
 
+require('./views/tags/form.coffee');
+
 $('[data-toggle="tooltip"]').tooltip();
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./views/categories/edit.coffee":22,"./views/contents/edit.coffee":23,"./views/settings/index.coffee":24,"./views/tags/edit.coffee":25,"bootstrap":1,"jquery":14}],22:[function(require,module,exports){
+},{"./views/categories/edit.coffee":22,"./views/contents/edit.coffee":23,"./views/settings/index.coffee":24,"./views/tags/edit.coffee":25,"./views/tags/form.coffee":26,"bootstrap":1,"jquery":14}],22:[function(require,module,exports){
 var Vue, impress, slug;
 
 Vue = require('vue');
@@ -38336,6 +38338,36 @@ new Vue({
 
 
 },{"../../impress.coffee":20,"jstimezonedetect":15,"vue":19}],25:[function(require,module,exports){
+var Vue, impress;
+
+Vue = require('vue');
+
+impress = require('../../impress.coffee').impress;
+
+new Vue({
+  el: '#i-tags',
+  data: impress.$data({
+    deleteTag: {},
+    checkedAll: false
+  }),
+  ready: function() {
+    this.$watch('checkedAll', function(newVal) {
+      return this.tags.map(function(tag) {
+        return tag.selected = newVal;
+      });
+    });
+  },
+  computed: {
+    selected: function() {
+      return this.tags.filter(function(tag) {
+        return tag.selected;
+      });
+    }
+  }
+});
+
+
+},{"../../impress.coffee":20,"vue":19}],26:[function(require,module,exports){
 var Vue, impress, slug;
 
 Vue = require('vue');
@@ -38345,11 +38377,9 @@ impress = require('../../impress.coffee').impress;
 slug = require('slugg');
 
 new Vue({
-  el: '#i-tags',
+  el: '#i-tags-form',
   data: impress.$data({
     autoSlug: true,
-    deleteTag: {},
-    checkedAll: false,
     tag: {
       id: '',
       name: '',
@@ -38373,18 +38403,6 @@ new Vue({
         return this.tag.slug = slug(this.tag.name);
       }
     });
-    this.$watch('checkedAll', function(newVal) {
-      return this.tags.map(function(tag) {
-        return tag.selected = newVal;
-      });
-    });
-  },
-  computed: {
-    selected: function() {
-      return this.tags.filter(function(tag) {
-        return tag.selected;
-      });
-    }
   }
 });
 
