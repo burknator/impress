@@ -12,7 +12,7 @@
     @parent
 @stop
 
-@section('container-id', 'i-tags-index')
+@section('container-id', 'i-tags')
 
 @section('content')
     <div id="delete-tag-form" class="modal fade" v-if="deleteTag.id != ''">
@@ -55,7 +55,7 @@
                             Are you sure you want to delete these tags?
                         </p>
                         <ul class="list-group">
-                            <li class="list-group-item" v-repeat="tag in selected">@{{ tag.name }} <small class="text-muted">@{{ tag.slug }}</small></li>
+                            <li class="list-group-item" v-for="tag in selected">@{{ tag.name }} <small class="text-muted">@{{ tag.slug }}</small></li>
                         </ul>
                     </div>
 
@@ -71,7 +71,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Tags <a href="{{ route('i.tags.create') }}" class="btn btn-sm btn-link text-uppercase">@icon('plus') New</a></h1>
-            <a href="#delete-tags-form" class="btn btn-danger btn-sm" data-toggle="modal" v-attr="disabled: selected.length == 0">Delete</a>
+            <a href="#delete-tags-form" class="btn btn-danger btn-sm" data-toggle="modal" :disabled="selected.length == 0">Delete</a>
             <table class="table table-hover tag-list">
                 <thead>
                     <tr>
@@ -83,7 +83,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-repeat="tag in tags" v-on="click: tag.selected = !tag.selected">
+                    <tr v-for="tag in tags" v-on="click: tag.selected = !tag.selected">
                         <td style="border-left-color: #@{{ tag.color.hex }}"><input type="checkbox" v-model="tag.selected"></td>
                         <td><a href="@{{ tag.edit_link }}">@{{ tag.name }}</a></td>
                         <td>@{{ tag.slug }}</td>
@@ -95,7 +95,7 @@
                             <a href="#delete-tag-form"
                                data-toggle="modal"
                                class="text-danger"
-                               v-on="click: deleteTag = tag">Delete</a>
+                               @click="deleteTag = tag">Delete</a>
                         </td>
                     </tr>
                 </tbody>

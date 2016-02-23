@@ -38345,7 +38345,7 @@ impress = require('../../impress.coffee').impress;
 slug = require('slugg');
 
 new Vue({
-  el: '#i-tags-edit',
+  el: '#i-tags',
   data: impress.$data({
     autoSlug: true,
     deleteTag: {},

@@ -3,7 +3,7 @@ Vue       = require 'vue'
 slug      = require 'slugg'
 
 new Vue
-  el: '#i-tags-edit'
+  el: '#i-tags'
 
   data: impress.$data
     autoSlug   : true
